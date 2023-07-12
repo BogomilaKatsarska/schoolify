@@ -1,0 +1,6 @@
+<h1> Hello to Schoolify </h1>
+<form action="{% url 'sign up' %}" method="post">
+    {{ form.as_p}}
+    <button>Sign UP now!</button>
+    {% csrf_token %}
+</form>
