@@ -39,3 +39,9 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+
+    @property
+    def full_name(self):
+        if self.first_name or self.last_name:
+            return f'{self.first_name} {self.last_name}'
+        return None

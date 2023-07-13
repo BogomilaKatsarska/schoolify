@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('schoolify.auth_app.urls')),
+    path('assignment/', include('schoolify.assignment.urls')),
 ]

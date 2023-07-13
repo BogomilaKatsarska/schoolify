@@ -12,6 +12,9 @@ class AppUserAdmin(UserAdmin):
     ordering = ('personal_number',)
     list_display = ['personal_number', 'date_joined', 'last_login']
     list_filter = ()
+    #TODO: try below when admin is working
+    #list_filter = ('school_grade')
+    #search_fields = ("personal_number__startswith", )
     add_form = SignUpForm
     add_fieldsets = (
         (
