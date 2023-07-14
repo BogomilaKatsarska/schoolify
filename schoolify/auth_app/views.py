@@ -1,8 +1,13 @@
 from django.contrib.auth import get_user_model, login
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from schoolify.auth_app.forms import SignUpForm
+
+
+def index(request):
+    return HttpResponse('It works')
 
 
 class SignUpView(CreateView):
@@ -26,5 +31,8 @@ class SignInView(LoginView):
 
         return self.get_redirect_url() or self.get_default_redirect_url()
 
+
 class SignOutView(LogoutView):
     template_name = 'auth/sign-out.html'
+    success_url = reverse_lazy('index')
+

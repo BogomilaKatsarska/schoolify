@@ -11,10 +11,10 @@ class AppUserAdmin(UserAdmin):
     #TODO: admin does not work properly - can't edit existing users and add new ones
     ordering = ('personal_number',)
     list_display = ['personal_number', 'date_joined', 'last_login']
-    list_filter = ()
-    #TODO: try below when admin is working
-    #list_filter = ('school_grade')
-    #search_fields = ("personal_number__startswith", )
+    readonly_fields = ["date_joined"]
+    list_filter = ('date_joined',)
+    #TODO: write 'please write the first numbers of the personal number'
+    search_fields = ("personal_number__startswith", )
     add_form = SignUpForm
     add_fieldsets = (
         (
@@ -32,3 +32,4 @@ class AppUserAdmin(UserAdmin):
             },
         ),
     )
+
