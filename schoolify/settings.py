@@ -136,8 +136,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth_app.AppUser'
 
 LOGIN_URL = reverse_lazy('sign in')
-#TODO: make LOGOUT_REDIRECT_URL to redirect to index
-LOGOUT_REDIRECT_URL = reverse_lazy('sign in')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 STATIC_URL = 'static/'
 

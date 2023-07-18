@@ -7,6 +7,11 @@ from schoolify.auth_app.validators import validate_capitalized, validate_school_
 UserModel = get_user_model()
 
 
+#TODO: check auth/sign-up
+# IntegrityError at /auth/sign-up/
+# null value in column "user_id" of relation "auth_app_profile" violates not-null constraint
+# DETAIL:  Failing row contains (Bogomila, Katsars, 4, null).
+
 class SignUpForm(UserCreationForm):
     MAX_FIRST_NAME = 15
     MAX_LAST_NAME = 15
