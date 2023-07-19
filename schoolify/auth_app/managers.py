@@ -10,7 +10,7 @@ class AppUserManager(BaseUserManager):
         Create and save a user with the given username, email, and password.
         """
         if not personal_number:
-            raise ValueError('The given personal number must be set')
+            raise ValueError('Personal number must be set')
         user = self.model(personal_number=personal_number, **extra_fields)
         user.password = make_password(password)
         user.save(using=self._db)

@@ -1,5 +1,7 @@
 """
 1:48 starts abstractbaseuser
+2:20 starts AppUser Admin
+2:45 - lecture to continue
 superuser: 1122334455
 password: 123
 
@@ -135,8 +137,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'auth_app.AppUser'
 
-LOGIN_URL = reverse_lazy('sign in')
-LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('sign in')
 
 STATIC_URL = 'static/'
 

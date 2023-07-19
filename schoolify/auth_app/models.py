@@ -5,6 +5,7 @@ from django.db import models
 from schoolify.auth_app.managers import AppUserManager
 
 
+#1:49:33 starts lecture
 class AppUser(AbstractBaseUser, PermissionsMixin):
     personal_number = models.PositiveIntegerField(
         unique=True,

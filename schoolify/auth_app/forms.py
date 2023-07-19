@@ -1,16 +1,11 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UsernameField
 from schoolify.auth_app.models import Profile
 from schoolify.auth_app.validators import validate_capitalized, validate_school_year_range
 
 UserModel = get_user_model()
 
-
-#TODO: check auth/sign-up
-# IntegrityError at /auth/sign-up/
-# null value in column "user_id" of relation "auth_app_profile" violates not-null constraint
-# DETAIL:  Failing row contains (Bogomila, Katsars, 4, null).
 
 class SignUpForm(UserCreationForm):
     MAX_FIRST_NAME = 15
@@ -30,10 +25,10 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = UserModel
         fields = (UserModel.USERNAME_FIELD, 'password1', 'password2', 'first_name', 'last_name', 'school_grade')
+        field_classes = {'username': UsernameField}
 
     def save(self, commit=True):
         user = super().save(commit=commit)
-
         first_name = self.cleaned_data['first_name']
         last_name = self.cleaned_data['last_name']
         school_grade = self.cleaned_data['school_grade']
@@ -41,6 +36,8 @@ class SignUpForm(UserCreationForm):
             first_name=first_name,
             last_name=last_name,
             school_grade=school_grade,
+            user=user,
+            # user_id=user.pk,
         )
         if commit:
             profile.save()
