@@ -6,8 +6,6 @@ from django.views.generic import CreateView
 from schoolify.auth_app.forms import SignUpForm
 
 
-
-
 def index(request):
     return HttpResponse('It works')
 
@@ -38,3 +36,5 @@ class SignInView(LoginView):
 class SignOutView(LogoutView):
     template_name = 'auth/sign-out.html'
     # next_page = reverse_lazy('index')
+
+#TODO: password change view

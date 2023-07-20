@@ -1,0 +1,28 @@
+{% load static %}
+{##TODO: fix JS and CSS#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Schoolfy</title>
+
+</head>
+<body>
+
+{% include 'common/nav.html' %}
+
+
+<main>
+    {% block page_content %}
+    {% endblock %}
+</main>
+
+{% include 'common/footer.html' %}
+
+<script src="{% static 'main.js' %}"></script>
+
+</body>
+</html>

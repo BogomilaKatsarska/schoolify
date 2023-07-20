@@ -47,6 +47,8 @@ INSTALLED_APPS = [
 
     'schoolify.auth_app',
     'schoolify.assignment',
+    'schoolify.questions',
+    'schoolify.book',
 ]
 
 MIDDLEWARE = [

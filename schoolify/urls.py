@@ -23,4 +23,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('auth/', include('schoolify.auth_app.urls')),
     path('assignment/', include('schoolify.assignment.urls')),
+    path('questions/', include('schoolify.questions.urls')),
+    path('books/', include('schoolify.book.urls')),
 ]

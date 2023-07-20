@@ -23,6 +23,9 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'personal_number'
     objects = AppUserManager()
 
+    def __str__(self):
+        return str(self.personal_number)
+
 
 class Profile(models.Model):
     first_name = models.CharField(
