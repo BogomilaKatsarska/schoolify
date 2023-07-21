@@ -24,36 +24,48 @@
  {% if object_list %}
 
         <section id="catalogue">
-            <h1>Total Books: {{ total_books }}</h1>
+            <h1>
+                Total Books: {{ total_books }}
+                Total English Books: {{ total_english_books }}
+                Total Mathematics Books: {{ total_mathematics_books }}
+                Total Music Books: {{ total_music_books }}
+                Total Cooking Books: {{ total_cooking_books }}
+            </h1>
 
             {% for b in object_list %}
 
             <div class="car-card">
                     <div class="image-wrap">
-                        <!-- car image -->
                         <img src="{{ b.cover_image }}"
-                             alt="{{ b.name }}">
+                             alt=" image of {{ b.name }}">
                     </div>
-                    <!-- car type -->
-                    <h3>Name: {{ b.name }}</h3>
+                <h3>Name: {{ b.name }}</h3>
                 <h3>Author: {{ b.author }}</h3>
-                    <!-- car model -->
-                #TODO: check whether you really want to use truncatechars
-                    <h1>Description: {{ b.description|truncatechars:5}} </h1>
+                <h1>Description: {{ b.description}} </h1>
                 <h3>School subject: {{ b.school_subject }}</h3>
                 <h3>Number of pages: {{ b.number_of_pages }}</h3>
                 <h3>Available from: {{ b.available_from }}</h3>
 
+{#                                <a href="{% url 'book enquiry' b.pk %}">#}
+{#                                    <svg aria-label="Book This Book" class="_8-yf5 " color="#262626" fill="#262626"#}
+{#                                         height="24" role="img" viewBox="0 0 48 48" width="24">#}
+{#                                        <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3#}
+{#										3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6#}
+{#										1 1.2 1.1h.2c.5 0 1-.3#}
+{#										1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2#}
+{#										6.1h35.5L18 18.7 5.2 6.1zm18.7#}
+{#										33.6l-4.4-18.4L42.4 8.6 23.9 39.7z">#}
+{#                                        </path>#}
+{#                                    </svg>#}
+{#                                </a>#}
+            <a href="{% url 'book enquiry' b.pk %}">
+                                    CLICK HERE TO BOOK THIS BOOK FOR 5 DAYS
+                                </a>
 
-{#                    <div class="details-buttons">#}
-{#                        <!-- car details button -->#}
-{#                        <a href="{% url 'details car' pk=c.pk %}" class="details-btn">Details</a>#}
-{#                    </div>#}
-                </div>
+            </div>
      {% endfor %}
 
             {% else %}
-            <!-- Display paragraph: If there are no cars yet-->
         <p class="no-articles">No books available</p>
             {% endif %}
 

@@ -1,13 +1,14 @@
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from schoolify.auth_app.forms import SignUpForm
 
 
 def index(request):
-    return HttpResponse('It works')
+    return render(request, 'common/base.html')
 
 
 class SignUpView(CreateView):
@@ -35,6 +36,6 @@ class SignInView(LoginView):
 
 class SignOutView(LogoutView):
     template_name = 'auth/sign-out.html'
-    # next_page = reverse_lazy('index')
+    next_page = reverse_lazy('index')
 
 #TODO: password change view
