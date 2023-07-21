@@ -3,12 +3,14 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 
 from schoolify.auth_app.managers import AppUserManager
+from schoolify.auth_app.validators import validate_len_personal_number
 
 
 #1:49:33 starts lecture
 class AppUser(AbstractBaseUser, PermissionsMixin):
     personal_number = models.PositiveIntegerField(
         unique=True,
+        validators=(validate_len_personal_number,),
         null=False,
         blank=False,
     )

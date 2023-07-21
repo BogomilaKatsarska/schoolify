@@ -1,12 +1,15 @@
 from django import forms
+from django.contrib.auth import get_user_model
 
 from schoolify.questions.models import Question, Answer
 
 
 class QuestionForm(forms.ModelForm):
+#TODO: kak da kaja che student = personal_number
     class Meta:
         model = Question
-        fields = ('related_school_subject', 'question')
+        # exclude = ('student',)
+        fields = '__all__'
         widgets = {
             'question': forms.Textarea(
                 attrs={
@@ -14,19 +17,8 @@ class QuestionForm(forms.ModelForm):
                 })
         }
 
-# TODO: check below
-#         def save(self, commit=True):
-#             question = super().save(commit=commit)
-#             question = self.cleaned_data['question']
-#             related_school_subject = self.cleaned_data['related_school_subject ']
-#             question = Question(
-#                 question=question,
-#                 related_school_subject =related_school_subject ,
-#                 student_id=student.pk,
-#             )
-#             if commit:
-#                 question.save()
-#             return question
+
+
 
 
 class AnswerForm(forms.ModelForm):

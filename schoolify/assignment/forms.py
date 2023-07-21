@@ -16,6 +16,7 @@ class AssignmentEnglishCreateForm(forms.ModelForm):
         fields = '__all__'
 
 
+
 class AssignmentMathematicsCreateForm(forms.ModelForm):
     class Meta:
         model = AssignmentMathematics

@@ -1,4 +1,6 @@
 {% load static %}
+{% include 'common/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,27 +8,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Create Assignment</title>
+    <title>Create Mathematics Assignment</title>
 </head>
 
 <body>
 <div id="box">
 
     <header>
-        <!-- Navigation Bar -->
-{#        TODO: fix nav bar#}
-        <h1><a class="index-navigation" href="{% url 'index' %}"><span>S</span>CHOOLIFY <span>W</span>ELCOME</a></h1>
-        <nav>
-            <a href="{%  url 'index' %}">Catalogue</a>
-            <a href="{% url 'index' %}">Create Car</a>
-            <a href="{% url 'index' %}">Profile</a>
-        </nav>
-    </header>
-
+       
 
     <section id="create-page" class="auth">
-        <!-- create assignment form -->
-        <form method="post" action="{% url 'assignment cooking create' %}">
+        <form method="post" action="{% url 'assignment mathematics create' %}">
             <div class="container">
                 {{ form }}
                 {% csrf_token %}
@@ -35,8 +27,6 @@
         </form>
     </section>
 </div>
-
-
 </body>
 </html>
 

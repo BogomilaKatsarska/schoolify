@@ -1,42 +1,42 @@
 {% load static %}
+{% include 'common/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Questions</title>
-</head>
 
 <body>
 <div id="box">
-{##}
-{#    <header>#}
-{#        <!-- Navigation Bar -->#}
-{#        TODO: fix nav bar#}
-{#        <h1><a class="index-navigation" href="{% url 'index' %}"><span>S</span>CHOOLIFY <span>W</span>ELCOME</a></h1>#}
-{#        <nav>#}
-{#            <a href="{%  url 'index' %}">Catalogue</a>#}
-{#            <a href="{% url 'index' %}">Create Car</a>#}
-{#            <a href="{% url 'index' %}">Profile</a>#}
-{#        </nav>#}
-{#    </header>#}
+<form action="{% url 'question create' %}" method="post">
+    {{ form.as_p}}
+    <input name="next" type="hidden" value="{{ next }}">
+    <button>Submit Question</button>
+    {% csrf_token %}
+</form>
 
+ {% if object_list %}
 
-    <section id="create-page" class="auth">
-        <!-- create assignment form -->
-        <form method="post" action="{% url 'question create' %}">
-            <div class="container">
-                {{ form }}
-                {% csrf_token %}
-                <input class="btn" type="submit" value="Submit question">
+        <section id="catalogue">
+
+            {% for question in object_list %}
+
+            <div class="car-card">
+
+                <h3>School Subject: {{ question.related_school_subject}}</h3>
+                <h3>Question: {{ question.question }}</h3>
+                <h1>Creation Date: {{ question.created_on}} </h1>
+                <h3>Student: {{ question.student }}</h3>
+
             </div>
-        </form>
-    </section>
+     {% endfor %}
+
+            {% else %}
+        <p class="no-articles">No questions available</p>
+            {% endif %}
+
+        </section>
+{% csrf_token %}
+
 </div>
-
-
 </body>
 </html>
-
