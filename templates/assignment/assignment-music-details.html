@@ -1,0 +1,37 @@
+{% load static %}
+{% include 'common/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%  static '/css/style.css'%}">
+    <title>Assignment Details</title>
+</head>
+
+<body>
+<div id="box">
+    <section id="car-details">
+        <h1>Assignment Details</h1>
+        <div class="info-section">
+
+            <div class="car-header">
+                <h1>{{ assignmentmusic.assignment_name}}</h1>
+                <!-- car model -->
+                <p><span class="description">School Subject: {{ assignmentmusic.school_subject}}</span></p>
+                <!-- car year -->
+                <p><span class="description">Song: {{ assignmentmusic.song }}</span></p>
+            </div>
+
+
+            <div class="buttons">
+                <a href="{% url 'assignment music edit' pk=assignmentmusic.pk %}" class="edit-button">Edit</a>
+                <a href="{% url 'assignment music delete' pk=assignmentmusic.pk %}" class="delete-button">Delete</a>
+            </div>
+        </div>
+    </section>
+{% csrf_token %}
+</div>
+</body>
+</html>

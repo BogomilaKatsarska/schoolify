@@ -13,7 +13,6 @@ def index(request):
 
 class SignUpView(CreateView):
     template_name = 'auth/sign-up.html'
-    #form_class is the form that is used to create our users
     form_class = SignUpForm
     success_url = reverse_lazy('index')
 
@@ -38,4 +37,5 @@ class SignOutView(LogoutView):
     template_name = 'auth/sign-out.html'
     next_page = reverse_lazy('index')
 
+#TODO: profile include
 #TODO: password change view

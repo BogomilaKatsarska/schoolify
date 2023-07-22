@@ -6,13 +6,18 @@
 
 
 <body>
-<div id="box">
-<form action="{% url 'question create' %}" method="post">
-    {{ form.as_p}}
-    <input name="next" type="hidden" value="{{ next }}">
-    <button>Submit Question</button>
-    {% csrf_token %}
-</form>
+
+
+<section id="create-page" class="auth">
+        <form method="post" action="{% url 'question create' %}">
+            <div class="container">
+                {{ question_form }}
+                {% csrf_token %}
+                <input class="btn" type="submit" value="Submit Question">
+            </div>
+        </form>
+    </section>
+
 
  {% if object_list %}
 
@@ -20,7 +25,9 @@
 
             {% for question in object_list %}
 
-            <div class="car-card">
+            <div class="info-section">
+
+            <div class="car-header">
 
                 <h3>School Subject: {{ question.related_school_subject}}</h3>
                 <h3>Question: {{ question.question }}</h3>
@@ -35,6 +42,51 @@
             {% endif %}
 
         </section>
+{# <!-- Start Answer Section -->#}
+{#                        {% for answer in question.answer_set.all %}#}
+{#                            <div class="comments">#}
+{#                                <div class="top">#}
+{#                                    <div class="userDetails">#}
+{#                                        <div class="comment-data">#}
+{#                                            <div class="profilepic">#}
+{#                                                <div class="profile_img">#}
+{#                                                    <div class="image">#}
+{#                                                        <!-- User Profile Image -->#}
+{#                                                        <img src="{% static 'images/person.png' %}" alt="img8">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <p>#}
+{#                                                <!-- Link to User Profile Details Page-->#}
+{#                                                <!-- User First and/or Last Name or username-->#}
+{#                                                <a href="">Ivan Ivanov</a>#}
+{#                                                <!-- User Comment -->#}
+{#                                                {{ answer.comment_text }}#}
+{#                                            </p>#}
+{#                                        </div>#}
+{#                                        <span>Sept. 20, 2022, 5:02 p.m.</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                        <!-- End Comments Section -->#}
+{##}
+{#                        <!-- Start Add Comments Section -->#}
+{#                        <div class="addComments">#}
+{#                            <div class="reaction">#}
+{#                                <h3>#}
+{#                                    <i class="far fa-smile"></i>#}
+{#                                </h3>#}
+{#                            </div>#}
+{#                            <!-- Start Add Comments Form -->#}
+{#                            <form method="post" action="{% url 'answer' question_id=question.pk %}">#}
+{#                                {{ answer_form }}#}
+{#                                <button type="submit">Post</button>#}
+{#                            </form>#}
+{#                            <!-- End Add Answer Form -->#}
+{##}
+{#                        </div>#}
+{#                        <!-- End Add Answer Section -->#}
 {% csrf_token %}
 
 </div>

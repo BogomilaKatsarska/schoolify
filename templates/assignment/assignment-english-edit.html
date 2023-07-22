@@ -8,22 +8,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Create Music Assignment</title>
+    <title>Assignment Edit</title>
 </head>
 
 <body>
 <div id="box">
 
     <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment music create' %}">
+        <form method="post" action="{% url 'assignment mathematics edit' pk=assignmentmathematics.pk %}">
             <div class="container">
-                {{ form }}
+
+                <h1>Edit {{ assignmentmathematics.assignment_name }} Assignment</h1>
+
+{{ form }}
                 {% csrf_token %}
-                <input class="btn" type="submit" value="Submit assignment">
+                <input class="btn submit" type="submit" value="Edit Assignment">
             </div>
         </form>
     </section>
 </div>
 </body>
 </html>
-

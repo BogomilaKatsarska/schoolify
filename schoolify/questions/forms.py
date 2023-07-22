@@ -18,9 +18,7 @@ class QuestionForm(forms.ModelForm):
         }
 
 
-
-
-
+#TODO: finish answer
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
@@ -31,3 +29,4 @@ class AnswerForm(forms.ModelForm):
                     'placeholder': 'Add your comment...',
                 })
         }
+

@@ -9,12 +9,10 @@ class AssignmentCookingCreateForm(forms.ModelForm):
         fields = '__all__'
 
 
-
 class AssignmentEnglishCreateForm(forms.ModelForm):
     class Meta:
         model = AssignmentEnglish
         fields = '__all__'
-
 
 
 class AssignmentMathematicsCreateForm(forms.ModelForm):

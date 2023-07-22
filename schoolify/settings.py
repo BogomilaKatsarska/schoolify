@@ -1,4 +1,5 @@
 """
+pip freeze > requirements.txt
 1:48 starts abstractbaseuser
 2:20 starts AppUser Admin
 2:45 - lecture to continue
@@ -140,3 +141,5 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
+
+#TODO: fix mediafiles

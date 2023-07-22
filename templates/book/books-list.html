@@ -12,40 +12,36 @@
 
 <body>
 <div id="box">
-{#    <header>#}
-{#        <!-- Navigation Bar -->#}
-{#        <h1><a class="index-navigation" href="#"><span>C</span>ARS <span>C</span>OLLECTION</a></h1>#}
-{#        <nav>#}
-{#            <a href="{% url 'view catalogue' %}">Catalogue</a>#}
-{#            <a href="{% url 'add car' %}">Create Car</a>#}
-{#            <a href="{% url 'details profile' %}">Profile</a>#}
-{#        </nav>#}
-{#    </header>#}
 
  {% if object_list %}
 
         <section id="catalogue">
+            <div class="car-header">
             <h1>
-                Total Books: {{ total_books }}
-                Total English Books: {{ total_english_books }}
-                Total Mathematics Books: {{ total_mathematics_books }}
-                Total Music Books: {{ total_music_books }}
-                Total Cooking Books: {{ total_cooking_books }}
+            <ul>
+                <li>Total Books: {{ total_books }}</li>
+                <li>Total English Books: {{ total_english_books }}</li>
+                <li>Total Mathematics Books: {{ total_mathematics_books }}</li>
+                <li>Total Music Books: {{ total_music_books }}</li>
+                <li>Total Cooking Books: {{ total_cooking_books }}</li>
+            </ul>
             </h1>
+                <div class="car-header">
 
             {% for b in object_list %}
+<div class="info-section">
 
-            <div class="car-card">
+            <div class="car-header">
                     <div class="image-wrap">
                         <img src="{{ b.cover_image }}"
                              alt=" image of {{ b.name }}">
                     </div>
-                <h3>Name: {{ b.name }}</h3>
-                <h3>Author: {{ b.author }}</h3>
+                <h1>Name: {{ b.name }}</h1>
+                <h1>Author: {{ b.author }}</h1>
                 <h1>Description: {{ b.description}} </h1>
-                <h3>School subject: {{ b.school_subject }}</h3>
-                <h3>Number of pages: {{ b.number_of_pages }}</h3>
-                <h3>Available from: {{ b.available_from }}</h3>
+                <h1>School subject: {{ b.school_subject }}</h1>
+                <h1>Number of pages: {{ b.number_of_pages }}</h1>
+                <h1>Available from: {{ b.available_from }}</h1>
 
 {#                                <a href="{% url 'book enquiry' b.pk %}">#}
 {#                                    <svg aria-label="Book This Book" class="_8-yf5 " color="#262626" fill="#262626"#}

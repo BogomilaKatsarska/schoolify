@@ -2,7 +2,18 @@
         <h1><a class="index-navigation" href="{% url 'index' %}"><span>S</span>CHOOLIFY <span>W</span>ELCOME</a></h1>
         <nav>
             {% if request.user.is_authenticated%}
-
+{##TODO: ask dad how to fix assignments nav bar#}
+            <a href="#">Assignments</a>
+{#            <div class="dropdown">#}
+{#              <button class="dropbtn">Assignments</button>#}
+{#              <div class="dropdown-content">#}
+{#                  <a href="{% url 'assignment music list' %}">Musics All Submitted</a>#}
+{#                  <a href="{% url 'assignment english list' %}">English All Submitted</a>#}
+{#                  <a href="{% url 'assignment mathematics list' %}">Mathematics All Submitted</a>#}
+{#                  <a href="{% url 'assignment cooking list' %}">Cooking All Submitted</a>#}
+{##}
+{#              </div>#}
+            </div>
             <a href="#">Assignments</a>
             <a href="{%  url 'questions all' %}">Q&A</a>
             <a href="{% url 'books list' %}">Books</a>
