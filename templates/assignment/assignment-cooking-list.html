@@ -1,0 +1,58 @@
+{% include 'common/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of assignments</title>
+</head>
+<body>
+
+
+{% if object_list %}
+
+        <section id="catalogue">
+        <h1>List of Assignments</h1>
+
+            {% for assignment in assignmentcooking_list %}
+
+            <div class="info-section">
+
+            <div class="car-header">
+
+                <h1>{{ assignment.assignment_name}} </h1>
+<div class="buttons">
+                <a href="{% url 'assignment cooking details' pk=assignment.pk %}" class="delete-button">Details</a>
+            </div>
+            </div>
+     {% endfor %}
+
+            {% else %}
+        <p class="no-articles">No questions available</p>
+            {% endif %}
+
+        </section>
+{##TODO: fix paginator #}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% else %}
+            <a disabled="disabled">&laquo; first</a>
+            <a disabled="disabled">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</body>
+</html>

@@ -28,11 +28,11 @@
             <div class="info-section">
 
             <div class="car-header">
-
+                <h1>Question: {{ question.question }}</h1>
                 <h3>School Subject: {{ question.related_school_subject}}</h3>
-                <h3>Question: {{ question.question }}</h3>
-                <h1>Creation Date: {{ question.created_on}} </h1>
                 <h3>Student: {{ question.student }}</h3>
+                <h3>Creation Date: {{ question.created_on}} </h3>
+
 
             </div>
      {% endfor %}
@@ -42,6 +42,80 @@
             {% endif %}
 
         </section>
+
+
+{##}
+
+{#                        <!-- Start Comments Section -->#}
+{#                        {% for answer in question.answer_set.all %}#}
+{#                            <div class="comments">#}
+{#                                <div class="top">#}
+{#                                    <div class="userDetails">#}
+{#                                        <div class="comment-data">#}
+{#                                            <div class="profilepic">#}
+{#                                                <div class="profile_img">#}
+{#                                                    <div class="image">#}
+{#                                                        <!-- User Profile Image -->#}
+{#                                                        <img src="{% static 'images/person.png' %}" alt="img8">#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                            <p>#}
+{#                                                <!-- Link to User Profile Details Page-->#}
+{#                                                <!-- User First and/or Last Name or username-->#}
+{#                                                <a href="">{{ answer.user}}</a>#}
+{#                                                <!-- User Comment -->#}
+{#                                                {{ answer.comment_text }}#}
+{#                                            </p>#}
+{#                                        </div>#}
+{#                                        <span>{{ answer.created_on }}</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                        <!-- End Comments Section -->#}
+{##}
+{#                        <!-- Start Add Comments Section -->#}
+{#                        <div class="addComments">#}
+{#                            <div class="reaction">#}
+{#                                <h3>#}
+{#                                    <i class="far fa-smile"></i>#}
+{#                                </h3>#}
+{#                            </div>#}
+{#                            <!-- Start Add Comments Form -->#}
+{#                            <form method="post" action="{% url 'answer' question_id=question_list.pk%}">#}
+{#                                {{ answer_form }}#}
+{#                                {% csrf_token %}#}
+{#                                <button type="submit">Post</button>#}
+{#                            </form>#}
+{#                            <!-- End Add Comments Form -->#}
+{##}
+{#                        </div>#}
+{#                        <!-- End Add Comments Section -->#}
+
+{##}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% else %}
+            <a disabled="disabled">&laquo; first</a>
+            <a disabled="disabled">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
 {# <!-- Start Answer Section -->#}
 {#                        {% for answer in question.answer_set.all %}#}
 {#                            <div class="comments">#}

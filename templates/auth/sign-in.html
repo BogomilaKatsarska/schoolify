@@ -1,8 +1,9 @@
-<h1> Hello </h1>
+{% include 'common/base.html' %}
+
 <form action="{% url 'sign in' %}" method="post">
     {{ form.as_p }}
     <input name="next" type="hidden" value="{{ next }}">
-    <button>Sign IN now!</button>
+    <button>Sign in</button>
     {% csrf_token %}
 </form>
 

@@ -8,8 +8,8 @@ class QuestionForm(forms.ModelForm):
 #TODO: kak da kaja che student = personal_number
     class Meta:
         model = Question
-        # exclude = ('student',)
-        fields = '__all__'
+        exclude = ('student',)
+        # fields = '__all__'
         widgets = {
             'question': forms.Textarea(
                 attrs={

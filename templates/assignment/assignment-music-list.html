@@ -8,17 +8,31 @@
 </head>
 <body>
 
-<ul>
-    {% for assignment in object_list %}
 
-        <li>
-            {{ assignment.assignment_name }}
-        </li>
-        {% empty %}
-        <h1> No submitted assignments yet</h1>
-    {% endfor %}
-</ul>
+{% if object_list %}
 
+        <section id="catalogue">
+        <h1>List of Assignments</h1>
+
+            {% for assignment in assignmentmusic_list %}
+
+            <div class="info-section">
+
+            <div class="car-header">
+
+                <h1>{{ assignment.assignment_name}} </h1>
+<div class="buttons">
+                <a href="{% url 'assignment music details' pk=assignment.pk %}" class="delete-button">Details</a>
+            </div>
+            </div>
+     {% endfor %}
+
+            {% else %}
+        <p class="no-articles">No questions available</p>
+            {% endif %}
+
+        </section>
+{##TODO: fix paginator #}
 
 <div class="pagination">
     <span class="step-links">

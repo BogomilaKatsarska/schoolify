@@ -1,0 +1,37 @@
+{% load static %}
+{% include 'common/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%  static '/css/style.css'%}">
+    <title>Profile Details</title>
+</head>
+
+<body>
+<div id="box">
+    <section id="car-details">
+        <h1>Profile Details</h1>
+        <div class="info-section">
+{# TODO: fill other personal info #}
+            <div class="car-header">
+                <h1>First Name:{{ profile.first_name}}</h1>
+                <!-- car model -->
+                <p><span class="description">Last Name: {{ profile.last_name}}</span></p>
+                <!-- car year -->
+                <p><span class="description">School Grade: {{ profile.school_grade }}</span></p>
+            </div>
+
+
+            <div class="buttons">
+                <a href="{% url 'profile edit' pk=object.pk %}" class="edit-button">Edit</a>
+                <a href="{% url 'profile delete' pk=object.pk %}" class="delete-button">Delete</a>
+            </div>
+        </div>
+    </section>
+{% csrf_token %}
+</div>
+</body>
+</html>

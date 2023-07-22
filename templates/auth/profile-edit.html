@@ -1,0 +1,31 @@
+{% load static %}
+{% include 'common/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Profile Edit</title>
+</head>
+
+<body>
+<div id="box">
+
+    <section id="create-page" class="auth">
+        <form method="post" action="{% url 'edit profile' pk=profile.pk %}">
+            <div class="container">
+
+                <h1>Edit Profile</h1>
+
+{{ form }}
+                {% csrf_token %}
+                <input class="btn submit" type="submit" value="Edit Assignment">
+            </div>
+        </form>
+    </section>
+</div>
+</body>
+</html>
