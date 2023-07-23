@@ -16,14 +16,14 @@
                 <input class="btn" type="submit" value="Submit Question">
             </div>
         </form>
-    </section>
+</section>
 
 
  {% if object_list %}
 
         <section id="catalogue">
 
-            {% for question in object_list %}
+     {% for question in object_list %}
 
             <div class="info-section">
 
@@ -33,8 +33,49 @@
                 <h3>Student: {{ question.student }}</h3>
                 <h3>Creation Date: {{ question.created_on}} </h3>
 
-
             </div>
+
+
+          <!-- Start Comments Section -->
+                        {% for answer in question.answer_set.all %}
+                            <div class="comments">
+                                <div class="top">
+                                    <div class="userDetails">
+                                        <div class="comment-data">
+
+                                            <p>
+                                                Answer:{{ answer.comment_text }}
+                                              <p>
+
+                                            Replied by student with ID:{{ answer.user.personal_number }} </p>
+                                            </p>
+                                        </div>
+                                        <span>{{ answer.created_on }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        <!-- End Comments Section -->
+
+                        <!-- Start Add Comments Section -->
+                        <div class="addComments">
+                            <div class="reaction">
+                                <h3>
+                                    <i class="far fa-smile"></i>
+                                </h3>
+                            </div>
+                            <!-- Start Add Comments Form -->
+                            <form method="post" action="{% url 'answer' question_id=question.pk %}">
+                                {{ answerform }}
+                                {% csrf_token %}
+                                <button type="submit">Sumit Answer</button>
+                            </form>
+                            <!-- End Add Comments Form -->
+
+                        </div>
+
+
+
      {% endfor %}
 
             {% else %}
@@ -44,56 +85,7 @@
         </section>
 
 
-{##}
 
-{#                        <!-- Start Comments Section -->#}
-{#                        {% for answer in question.answer_set.all %}#}
-{#                            <div class="comments">#}
-{#                                <div class="top">#}
-{#                                    <div class="userDetails">#}
-{#                                        <div class="comment-data">#}
-{#                                            <div class="profilepic">#}
-{#                                                <div class="profile_img">#}
-{#                                                    <div class="image">#}
-{#                                                        <!-- User Profile Image -->#}
-{#                                                        <img src="{% static 'images/person.png' %}" alt="img8">#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                            <p>#}
-{#                                                <!-- Link to User Profile Details Page-->#}
-{#                                                <!-- User First and/or Last Name or username-->#}
-{#                                                <a href="">{{ answer.user}}</a>#}
-{#                                                <!-- User Comment -->#}
-{#                                                {{ answer.comment_text }}#}
-{#                                            </p>#}
-{#                                        </div>#}
-{#                                        <span>{{ answer.created_on }}</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{#                        <!-- End Comments Section -->#}
-{##}
-{#                        <!-- Start Add Comments Section -->#}
-{#                        <div class="addComments">#}
-{#                            <div class="reaction">#}
-{#                                <h3>#}
-{#                                    <i class="far fa-smile"></i>#}
-{#                                </h3>#}
-{#                            </div>#}
-{#                            <!-- Start Add Comments Form -->#}
-{#                            <form method="post" action="{% url 'answer' question_id=question_list.pk%}">#}
-{#                                {{ answer_form }}#}
-{#                                {% csrf_token %}#}
-{#                                <button type="submit">Post</button>#}
-{#                            </form>#}
-{#                            <!-- End Add Comments Form -->#}
-{##}
-{#                        </div>#}
-{#                        <!-- End Add Comments Section -->#}
-
-{##}
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
@@ -115,52 +107,6 @@
     </span>
 </div>
 
-
-{# <!-- Start Answer Section -->#}
-{#                        {% for answer in question.answer_set.all %}#}
-{#                            <div class="comments">#}
-{#                                <div class="top">#}
-{#                                    <div class="userDetails">#}
-{#                                        <div class="comment-data">#}
-{#                                            <div class="profilepic">#}
-{#                                                <div class="profile_img">#}
-{#                                                    <div class="image">#}
-{#                                                        <!-- User Profile Image -->#}
-{#                                                        <img src="{% static 'images/person.png' %}" alt="img8">#}
-{#                                                    </div>#}
-{#                                                </div>#}
-{#                                            </div>#}
-{#                                            <p>#}
-{#                                                <!-- Link to User Profile Details Page-->#}
-{#                                                <!-- User First and/or Last Name or username-->#}
-{#                                                <a href="">Ivan Ivanov</a>#}
-{#                                                <!-- User Comment -->#}
-{#                                                {{ answer.comment_text }}#}
-{#                                            </p>#}
-{#                                        </div>#}
-{#                                        <span>Sept. 20, 2022, 5:02 p.m.</span>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        {% endfor %}#}
-{#                        <!-- End Comments Section -->#}
-{##}
-{#                        <!-- Start Add Comments Section -->#}
-{#                        <div class="addComments">#}
-{#                            <div class="reaction">#}
-{#                                <h3>#}
-{#                                    <i class="far fa-smile"></i>#}
-{#                                </h3>#}
-{#                            </div>#}
-{#                            <!-- Start Add Comments Form -->#}
-{#                            <form method="post" action="{% url 'answer' question_id=question.pk %}">#}
-{#                                {{ answer_form }}#}
-{#                                <button type="submit">Post</button>#}
-{#                            </form>#}
-{#                            <!-- End Add Answer Form -->#}
-{##}
-{#                        </div>#}
-{#                        <!-- End Add Answer Section -->#}
 {% csrf_token %}
 
 </div>

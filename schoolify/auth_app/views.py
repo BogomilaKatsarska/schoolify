@@ -2,7 +2,7 @@ from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from schoolify.auth_app.forms import SignUpForm
 from schoolify.auth_app.models import Profile
@@ -43,7 +43,9 @@ class ProfileEditView(UpdateView):
     model = Profile
     template_name = "auth/profile-edit.html"
     fields = '__all__'
-    success_url = reverse_lazy('profile read')
+
+    def get_success_url(self):
+        return reverse('profile details', kwargs={'pk': self.object.pk})
 
 
 class ProfileDeleteView(DeleteView):
@@ -56,5 +58,4 @@ class ProfileDetailsView(DetailView):
     model = Profile
     template_name = "auth/profile-details.html"
 
-#TODO: profile include
 #TODO: password change view

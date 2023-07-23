@@ -1,11 +1,8 @@
 from django import forms
-from django.contrib.auth import get_user_model
-
 from schoolify.questions.models import Question, Answer
 
 
 class QuestionForm(forms.ModelForm):
-#TODO: kak da kaja che student = personal_number
     class Meta:
         model = Question
         exclude = ('student',)
@@ -18,15 +15,14 @@ class QuestionForm(forms.ModelForm):
         }
 
 
-#TODO: finish answer
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ('comment_text',)
         widgets = {
-            'comment_text': forms.Textarea(
+            'answer_text': forms.Textarea(
                 attrs={
-                    'placeholder': 'Add your comment...',
+                    'placeholder': 'Add your answer...',
                 })
         }
 
