@@ -143,3 +143,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 #TODO: fix mediafiles
+#extra_context --> static context
+#template_name
+#model
+# def get_context_data - method, which returns context --> dynamic context
+#       context = super().get_context_data(**kwargs)
+#       context['employees'] = Employee.objects.all()
+#       return context
+#object_list when we use ListView
+#to continue from 2:11

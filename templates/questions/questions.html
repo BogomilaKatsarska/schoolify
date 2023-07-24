@@ -7,6 +7,15 @@
 
 <body>
 
+<section id="create-page" class="auth">
+<form method="get" action="{% url 'questions all' %}">
+     <div class="container">
+        <input name="pattern" placeholder="Search a question by question name..."/>
+        <input class="btn" type="submit" value="Submit question">
+     </div>
+</form>
+</section>
+
 
 <section id="create-page" class="auth">
         <form method="post" action="{% url 'question create' %}">
@@ -85,6 +94,7 @@
         </section>
 
 
+{% if object_list %}
 
 <div class="pagination">
     <span class="step-links">
@@ -106,6 +116,7 @@
         {% endif %}
     </span>
 </div>
+{% endif %}
 
 {% csrf_token %}
 

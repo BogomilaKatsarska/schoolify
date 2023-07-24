@@ -28,11 +28,13 @@
      {% endfor %}
 
             {% else %}
-        <p class="no-articles">No questions available</p>
+        <p class="no-articles">No assignments available</p>
             {% endif %}
 
         </section>
 {##TODO: fix paginator #}
+
+{% if assignmentenglish_list %}
 
 <div class="pagination">
     <span class="step-links">
@@ -54,5 +56,6 @@
         {% endif %}
     </span>
 </div>
+{% endif %}
 </body>
 </html>

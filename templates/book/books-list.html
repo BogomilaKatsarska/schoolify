@@ -13,6 +13,15 @@
 <body>
 <div id="box">
 
+<section>
+<form method="get" action="{% url 'books list' %}">
+     <div class="container">
+        <input name="pattern" placeholder="Search a book by title.."/>
+        <input class="btn" type="submit" value="Submit question">
+     </div>
+</form>
+</section>
+
  {% if object_list %}
 
         <section id="catalogue">
