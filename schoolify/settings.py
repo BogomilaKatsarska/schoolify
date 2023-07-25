@@ -146,9 +146,49 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 #extra_context --> static context
 #template_name
 #model
+#modelform_factory
 # def get_context_data - method, which returns context --> dynamic context
 #       context = super().get_context_data(**kwargs)
 #       context['employees'] = Employee.objects.all()
 #       return context
+#get_queryset
 #object_list when we use ListView
-#to continue from 2:11
+#CTRL + TAB -> to switch between diff files
+#form_class
+# def get_form()
+
+# def get_form(self, form_class = None):
+#     form = super().get_form(form_class=form_class)
+#     for name, field in form.fields.items():
+#         field.widgets.attrs['placeholder'] = 'Enter ' + name
+#     return form
+
+# def get_form_class(self):
+#     --> dynamic way go do form_class = EmployeeCreateForm
+
+# def get_absolute_url():
+#     pass
+
+# def get_success_url(self):
+#     created_object = self.object
+#     return reverse_lazy('employee details', kwargs={
+#         'pk':created_object.pk,
+#     })
+
+# dispatch() -->decides whether to get/post; we override it when we want to change access
+
+# def dispatch(self, request, *args, **kwargs):
+#     if profile to update is the same as user logged in => continue
+#     else:
+#         401, unauthorized
+#     return dispatch(request, args, **kwargs)
+#
+#
+# def get_object():
+#     pass
+#
+# def get_object_list():
+#     pass
+
+#with alt we can mark many rows in diff places
+2:42 = continue
