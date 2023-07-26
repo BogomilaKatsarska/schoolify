@@ -15,10 +15,10 @@
 <div id="box">
 
     <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment mathematics edit' pk=assignmentmathematics.pk %}">
+        <form method="post" action="{% url 'assignment english edit' pk=assignmentenglish.pk %}">
             <div class="container">
 
-                <h1>Edit {{ assignmentmathematics.assignment_name }} Assignment</h1>
+                <h1>Edit {{ assignmentenglish.assignment_name }} Assignment</h1>
 
 {{ form }}
                 {% csrf_token %}

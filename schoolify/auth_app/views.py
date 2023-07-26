@@ -59,4 +59,3 @@ class ProfileDetailsView(LoginRequiredMixin, DetailView):
     model = Profile
     template_name = "auth/profile-details.html"
 
-#TODO: password change view

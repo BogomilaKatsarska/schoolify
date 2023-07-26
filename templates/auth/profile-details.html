@@ -21,6 +21,9 @@
                 <p><span class="description">Last Name: {{ profile.last_name}}</span></p>
                 <p><span class="description">School Grade: {{ profile.school_grade }}</span></p>
                 <p><span class="description">Personal Number: {{ profile.user.personal_number}}</span></p>
+                {% if profile.user.profile_picture %}
+                <p><span class="description">Profile Picture: {{ profile.user.profile_picture}}</span></p>
+                {% endif %}
             </div>
 
             <div class="buttons">

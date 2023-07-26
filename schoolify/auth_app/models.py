@@ -56,3 +56,9 @@ class Profile(models.Model):
         if self.first_name or self.last_name:
             return f'{self.first_name} {self.last_name}'
         return None
+
+'''
+superuser:
+1999999998
+123qwe!@#
+'''

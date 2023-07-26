@@ -18,7 +18,6 @@ class AppUserAdmin(UserAdmin):
     add_form = SignUpForm
     fieldsets = ()
 
-
     # fieldsets = (
     #     (None, {'fields': ('personal_number', 'password')}),
     #     ('Permissions', {
