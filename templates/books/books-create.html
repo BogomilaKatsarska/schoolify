@@ -1,0 +1,32 @@
+{% load static %}
+{% include 'common/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Add new book</title>
+</head>
+
+<body>
+<div id="box">
+
+    <header>
+
+
+    <section id="create-page" class="auth">
+        <form method="post" action="{% url 'book create' %}">
+            <div class="container">
+                {{ form }}
+                {% csrf_token %}
+                <input class="btn" type="submit" value="Add new book">
+            </div>
+        </form>
+    </section>
+</div>
+</body>
+</html>
+

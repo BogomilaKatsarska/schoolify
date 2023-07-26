@@ -18,7 +18,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
 from pathlib import Path
 
 from django.urls import reverse_lazy
@@ -142,6 +141,7 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
+
 #TODO: fix mediafiles
 #extra_context --> static context
 #template_name
@@ -191,4 +191,3 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 #     pass
 
 #with alt we can mark many rows in diff places
-2:42 = continue

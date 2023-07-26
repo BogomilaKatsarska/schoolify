@@ -40,6 +40,11 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
+    profile_picture = models.ImageField(
+        upload_to='profile-pictures',
+        null=True,
+        blank=True,
+    )
     user = models.OneToOneField(
         AppUser,
         primary_key=True,
