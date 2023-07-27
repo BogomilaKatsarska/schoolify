@@ -15,17 +15,17 @@ class CreatedAndUpdatedInfoMixIn(models.Model):
 
 
 class DisabledFormFieldsMixin:
+    disabled_attr_name = 'readonly'
     disabled_fields = ()
+    fields = {}
 
-    def get_form(self, *args, **kwargs):
-        form = super().get_form(*args, **kwargs)
+    def _disable_fields(self):
+        if self.disabled_fields == '__all__':
+            fields = self.fields.keys()
+        else:
+            fields = self.disabled_fields
 
-        # fields = self.disabled_fields \
-        # if self.disabled_fields != '__all__' \
-        # else
-
-        for field in self.disabled_fields:
-            form.fields[field].widget.attrs['disabled'] = 'disabled'
-            form.fields[field].widget.attrs['readonly'] = 'readonly'
-
-        return form
+        for field_name in fields:
+            if field_name in self.fields:
+                field = self.fields[field_name]
+                field.widgetd.attrs[self.disabled_attr_name] = self.disabled_attr_name

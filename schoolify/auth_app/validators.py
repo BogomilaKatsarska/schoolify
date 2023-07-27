@@ -5,7 +5,7 @@ from django.core import exceptions
 def validate_len_personal_number(value):
     len_username = list(str(value))
     if len(len_username) != 10:
-        raise exceptions.ValidationError('The personal number should consist of 10characters.')
+        raise exceptions.ValidationError('The personal number should consist of 10digits.')
 
 
 def validate_capitalized(value):

@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
-
 from schoolify.auth_app.managers import AppUserManager
 from schoolify.auth_app.validators import validate_len_personal_number
 

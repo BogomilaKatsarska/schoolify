@@ -2,6 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
 from schoolify.assignment.models import AssignmentCooking, AssignmentMathematics, AssignmentEnglish, AssignmentMusic
+
+
 #TODO: make prepopulated school_subject field
 
 

@@ -26,4 +26,3 @@ def allow_groups(groups=None):
         return decorator(func)
     return decorator
 
-#test feaature
