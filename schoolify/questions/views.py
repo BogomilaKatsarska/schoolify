@@ -41,8 +41,6 @@ class QuestionListView(LoginRequiredMixin, ListView):
     def __get_pattern(self):
         return self.request.GET.get('pattern', None)
 
-
-
 #TODO: check if answer func working
 
 
@@ -60,7 +58,3 @@ def answer_functionality(request, question_id):
             new_answer_instance.save()
 
         return redirect(request.META['HTTP_REFERER'] + f"#{question_id}")
-
-
-
-
