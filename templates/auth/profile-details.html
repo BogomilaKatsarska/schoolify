@@ -23,6 +23,9 @@
                 <p><span class="description">Personal Number: {{ profile.user.personal_number}}</span></p>
                 {% if profile.user.profile_picture %}
                 <p><span class="description">Profile Picture: {{ profile.user.profile_picture}}</span></p>
+                    {% else %}
+                <p><span class="description">Profile Picture: None</span></p>
+
                 {% endif %}
             </div>
 

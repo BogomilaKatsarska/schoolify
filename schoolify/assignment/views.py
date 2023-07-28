@@ -1,6 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
+
+from schoolify.assignment.forms import AssignmentCookingCreateForm
 from schoolify.assignment.models import AssignmentCooking, AssignmentMathematics, AssignmentEnglish, AssignmentMusic
 
 
@@ -10,12 +12,13 @@ from schoolify.assignment.models import AssignmentCooking, AssignmentMathematics
 class AssignmentCookingCreateView(LoginRequiredMixin, CreateView):
     template_name = 'assignment/assignment-cooking-create.html'
     model = AssignmentCooking
-    #TODO: DISABLE SUBJECT FOR EDIT
-    fields = ('recipe_name', 'dish_image', 'ingredients', 'preparation_time', 'assignment_name',)
+    #TODO: DISABLE SUBJECT FOR EDIT - fix assignment
+    fields = ('recipe_name', 'dish_image', 'ingredients', 'preparation_time', 'assignment_name')
     success_url = reverse_lazy('assignment cooking list')
 
     def form_valid(self, form):
         form.instance.school_subject = AssignmentCooking.COOKING
+        form.instance.submitted_by = self.request.user
 
         return super().form_valid(form)
 

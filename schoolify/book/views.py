@@ -2,12 +2,10 @@ import datetime
 from datetime import date
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-
-from schoolify.book.decorators import allow_groups
 from schoolify.book.models import Book
 
 
@@ -54,9 +52,16 @@ def book_a_book_functionality(request, book_id):
     return redirect('books list')
 
 
-@allow_groups(groups=['Teachers'])
-class BookCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'books/books-create.html'
+#TODO: CHECK DJANGO ADMIN !!! CANNOT ADD TO GROUPS + CHECK PERMISSION -> https://stackoverflow.com/questions/70274885/insert-or-update-on-table-django-admin-log-violates-foreign-key-constraint
+class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+    permission_required = 'book.add_book'
+    template_name = 'book/books-create.html'
     model = Book
     fields = '__all__'
-    success_url = reverse_lazy('books/books-create.html')
+    success_url = reverse_lazy('books list')
+
+'''
+1999999998 - superuser
+1231111111 - student
+
+'''

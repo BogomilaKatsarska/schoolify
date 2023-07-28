@@ -37,7 +37,6 @@ class Question(models.Model):
     student = models.ForeignKey(
         UserModel,
         on_delete=models.DO_NOTHING,
-        # default=UserModel,
     )
 
     class Meta:
@@ -72,6 +71,7 @@ class Answer(models.Model):
 
     def __str__(self):
         return f'User with ID: {self.user} gave a reply to question: "{self.to_question}"'
+
 
 
 

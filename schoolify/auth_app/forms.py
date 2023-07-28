@@ -43,3 +43,4 @@ class SignUpForm(UserCreationForm):
             profile.save()
         return user
 
+

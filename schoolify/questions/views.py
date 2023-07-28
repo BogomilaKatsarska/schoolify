@@ -20,8 +20,7 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
 class QuestionListView(LoginRequiredMixin, ListView):
     template_name = 'questions/questions.html'
     model = Question
-    #TODO: fix pagination
-    paginate_by = 10
+    paginate_by = 4
     extra_context = {
         'question_form': QuestionForm(),
         'answerform': AnswerForm(),
@@ -41,8 +40,6 @@ class QuestionListView(LoginRequiredMixin, ListView):
     def __get_pattern(self):
         return self.request.GET.get('pattern', None)
 
-#TODO: check if answer func working
-
 
 @login_required
 def answer_functionality(request, question_id):
@@ -51,9 +48,9 @@ def answer_functionality(request, question_id):
     if request.method == 'POST':
         form = AnswerForm(request.POST)
         if form.is_valid():
-            print('form is valid')
 
             new_answer_instance = form.save(commit=False)
+            new_answer_instance.user_id = request.user.pk
             new_answer_instance.to_question = question
             new_answer_instance.save()
 

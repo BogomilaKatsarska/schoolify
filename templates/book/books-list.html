@@ -12,12 +12,14 @@
 
 <body>
 <div id="box">
-
+{% if perms.book.add_book %}
+<a href="{% url 'book create' %}">Add new book</a>
+{% endif %}
 <section>
 <form method="get" action="{% url 'books list' %}">
      <div class="container">
         <input name="pattern" placeholder="Search a book by title.."/>
-        <input class="btn" type="submit" value="Submit question">
+        <input class="btn" type="submit" value="Search">
      </div>
 </form>
 </section>
