@@ -52,7 +52,6 @@ def book_a_book_functionality(request, book_id):
     return redirect('books list')
 
 
-#TODO: CHECK DJANGO ADMIN !!! CANNOT ADD TO GROUPS + CHECK PERMISSION -> https://stackoverflow.com/questions/70274885/insert-or-update-on-table-django-admin-log-violates-foreign-key-constraint
 class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     permission_required = 'book.add_book'
     template_name = 'book/books-create.html'

@@ -16,7 +16,7 @@ class AppUserAdmin(UserAdmin):
     #TODO: write 'please write the first numbers of the personal number'
     search_fields = ("personal_number__startswith", )
     add_form = SignUpForm
-    fieldsets = ()
+    # fieldsets = ()
 
     # fieldsets = (
     #     (None, {'fields': ('personal_number', 'password')}),

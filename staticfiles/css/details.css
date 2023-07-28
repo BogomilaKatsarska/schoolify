@@ -37,14 +37,14 @@
 
 .car-header {
     position: relative;
-    padding: 25px;
+    padding: 5px;
     height: 40%;
 }
 
 .car-header>h1 {
     color: #E2E8EA;
     margin-top: 5px;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 400;
     text-transform: uppercase;
 }
