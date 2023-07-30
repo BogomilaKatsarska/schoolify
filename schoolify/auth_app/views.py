@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
-from schoolify.auth_app.forms import SignUpForm
+from schoolify.auth_app.forms import SignUpForm, ProfileEditForm
 from schoolify.auth_app.models import Profile
 
 
@@ -42,8 +42,9 @@ class SignOutView(LoginRequiredMixin, LogoutView):
 
 class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = Profile
+    form_class = ProfileEditForm
     template_name = "auth/profile-edit.html"
-    fields = '__all__'
+    # fields = '__all__'
 
     def get_success_url(self):
         return reverse('profile details', kwargs={'pk': self.object.pk})

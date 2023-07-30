@@ -44,3 +44,7 @@ class SignUpForm(UserCreationForm):
         return user
 
 
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ('user',)

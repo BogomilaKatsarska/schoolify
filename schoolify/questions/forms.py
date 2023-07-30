@@ -23,6 +23,6 @@ class AnswerForm(forms.ModelForm):
             'answer_text': forms.Textarea(
                 attrs={
                     'placeholder': 'Add your answer...',
-                })
+                }),
         }
 

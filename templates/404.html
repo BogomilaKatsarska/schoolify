@@ -1,5 +1,3 @@
-{#TODO: adjust below#}
-
 {% extends 'common/base.html' %}
 {% load  static %}
 
@@ -7,15 +5,12 @@
 
     <div class="not-found">
         <h1>
-            Uh oh,<br> something broke.
+            Sorry,<br> we could not find that page.
         </h1>
 
-        <h3>Error 404 - page not found.</h3>
-        <!-- Link to Home Page -->
         <a href="{% url 'index' %}">
             <button>Return to Schoolify</button>
         </a>
     </div>
-    <!-- End 404 page -->
 
 {% endblock %}

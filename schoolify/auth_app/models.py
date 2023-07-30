@@ -60,4 +60,8 @@ class Profile(models.Model):
 superuser:
 1999999998
 123qwe!@#
+teacher:
+1000000001
+normal:
+1111100000
 '''
