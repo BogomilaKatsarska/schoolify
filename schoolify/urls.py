@@ -13,3 +13,7 @@ urlpatterns = [
     path('questions/', include('schoolify.questions.urls')),
     path('books/', include('schoolify.book.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+# http://127.0.0.1:8000/auth/sign-up/ --> hide field widgets
+# http://127.0.0.1:8000/auth/profile/details/32/ - cannot add picture + school_grade doesn't have validation

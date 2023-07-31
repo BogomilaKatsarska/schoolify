@@ -1,7 +1,6 @@
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
@@ -44,7 +43,6 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm
     template_name = "auth/profile-edit.html"
-    # fields = '__all__'
 
     def get_success_url(self):
         return reverse('profile details', kwargs={'pk': self.object.pk})

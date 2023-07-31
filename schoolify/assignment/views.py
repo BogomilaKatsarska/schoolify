@@ -2,17 +2,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
 
-from schoolify.assignment.forms import AssignmentCookingCreateForm
+from schoolify.assignment.forms import AssignmentEnglishEditForm, AssignmentMusicEditForm, \
+    AssignmentMathematicsEditForm, AssignmentCookingEditForm
 from schoolify.assignment.models import AssignmentCooking, AssignmentMathematics, AssignmentEnglish, AssignmentMusic
-
-
-#TODO: make prepopulated school_subject field
 
 
 class AssignmentCookingCreateView(LoginRequiredMixin, CreateView):
     template_name = 'assignment/assignment-cooking-create.html'
     model = AssignmentCooking
-    #TODO: DISABLE SUBJECT FOR EDIT - fix assignment
     fields = ('recipe_name', 'dish_image', 'ingredients', 'preparation_time', 'assignment_name')
     success_url = reverse_lazy('assignment cooking list')
 
@@ -129,29 +126,29 @@ class AssignmentCookingDeleteView(LoginRequiredMixin, DeleteView):
 
 class AssignmentMusicEditView(LoginRequiredMixin, UpdateView):
     model = AssignmentMusic
+    form_class = AssignmentMusicEditForm
     template_name = "assignment/assignment-music-edit.html"
-    fields = '__all__'
     success_url = reverse_lazy('assignment music list')
 
 
 class AssignmentEnglishEditView(LoginRequiredMixin, UpdateView):
     model = AssignmentEnglish
+    form_class = AssignmentEnglishEditForm
     template_name = "assignment/assignment-english-edit.html"
-    fields = '__all__'
     success_url = reverse_lazy('assignment english list')
 
 
 class AssignmentMathematicsEditView(LoginRequiredMixin, UpdateView):
     model = AssignmentMathematics
+    form_class = AssignmentMathematicsEditForm
     template_name = "assignment/assignment-mathematics-edit.html"
-    fields = '__all__'
     success_url = reverse_lazy('assignment mathematics list')
 
 
 class AssignmentCookingEditView(LoginRequiredMixin, UpdateView):
     model = AssignmentCooking
+    form_class = AssignmentCookingEditForm
     template_name = "assignment/assignment-cooking-edit.html"
-    fields = '__all__'
     success_url = reverse_lazy('assignment cooking list')
 
 
