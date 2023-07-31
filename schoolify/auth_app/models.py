@@ -2,7 +2,8 @@ from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from schoolify.auth_app.managers import AppUserManager
-from schoolify.auth_app.validators import validate_len_personal_number
+from schoolify.auth_app.validators import validate_len_personal_number, validate_school_year_range, \
+    image_size_validator_10mb, validate_capitalized
 
 
 #1:49:33 starts lecture
@@ -30,17 +31,21 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
 class Profile(models.Model):
     first_name = models.CharField(
+        validators=(validate_capitalized,),
         max_length=35,
     )
     last_name = models.CharField(
+        validators=(validate_capitalized,),
         max_length=35,
     )
     school_grade = models.PositiveIntegerField(
+        validators=(validate_school_year_range,),
         null=True,
         blank=True,
     )
     profile_picture = models.ImageField(
         upload_to='profile-pictures',
+        validators=(image_size_validator_10mb,),
         null=True,
         blank=True,
     )
