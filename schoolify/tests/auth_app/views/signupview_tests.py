@@ -35,3 +35,4 @@ class SignUpViewTests(TestCase):
 
         expected_url = reverse('index')
         self.assertRedirects(response, expected_url)
+
