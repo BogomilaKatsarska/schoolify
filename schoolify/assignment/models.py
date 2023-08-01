@@ -36,6 +36,13 @@ class AssignmentBaseModel(CreatedAndUpdatedInfoMixIn):
         null=False,
         blank=False,
     )
+    created_by = models.ForeignKey(
+        UserModel,
+        on_delete=models.DO_NOTHING,
+        null=False,
+        blank=False,
+    )
+
 
     def __str__(self):
         return f'{self.assignment_name} in {self.school_subject}'
@@ -55,7 +62,9 @@ class AssignmentEnglish(AssignmentBaseModel):
 
 
 class AssignmentMathematics(AssignmentBaseModel):
+    MAX_ASSIGNMENT_MATHEMATICS_LEN = 1000
     solution = models.TextField(
+        max_length=MAX_ASSIGNMENT_MATHEMATICS_LEN,
         help_text='Please write the solution here',
         null=False,
         blank=False,
@@ -85,7 +94,7 @@ class AssignmentCooking(AssignmentBaseModel):
     ingredients = models.TextField(
         help_text='Please fill in the ingredients of your dish.',
         null=False,
-        blank=False
+        blank=False,
     )
     preparation_time = models.TimeField(
         help_text='Please fill in the full reparation time, together with cooking time.',

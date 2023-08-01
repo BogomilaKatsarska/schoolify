@@ -23,13 +23,17 @@
                 <!-- car year -->
                 <p><span class="description">Essay: {{ assignmentenglish.essay }}</span></p>
                 <p><span class="description">External Resource Used: {{ assignmentenglish.external_resources_used }}</span></p>
+                <p><span class="description">Created by student: {{ assignmentenglish.created_by}}</span></p>
+
 
             </div>
 
 
             <div class="buttons">
+                {% if request.user == assignmentenglish.created_by  %}
                 <a href="{% url 'assignment english edit' pk=assignmentenglish.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'assignment english delete' pk=assignmentenglish.pk %}" class="delete-button">Delete</a>
+                {% endif %}
             </div>
         </div>
     </section>

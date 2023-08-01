@@ -2,6 +2,7 @@ from django import forms
 
 from schoolify.assignment.models import AssignmentCooking, AssignmentEnglish, AssignmentMathematics, AssignmentMusic
 
+
 class AssignmentEnglishBaseForm(forms.ModelForm):
     class Meta:
         model = AssignmentEnglish
@@ -16,6 +17,7 @@ class AssignmentEnglishEditForm(AssignmentEnglishBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['school_subject'].disabled = True
+        self.fields['created_by'].disabled = True
 
 
 class AssignmentCookingBaseForm(forms.ModelForm):
@@ -32,6 +34,8 @@ class AssignmentCookingEditForm(AssignmentCookingBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['school_subject'].disabled = True
+        self.fields['created_by'].disabled = True
+
 
 
 class AssignmentMathematicsBaseForm(forms.ModelForm):
@@ -48,6 +52,7 @@ class AssignmentMathematicsEditForm(AssignmentMathematicsBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['school_subject'].disabled = True
+        self.fields['created_by'].disabled = True
 
 
 class AssignmentMusicBaseForm(forms.ModelForm):
@@ -64,3 +69,5 @@ class AssignmentMusicEditForm(AssignmentMusicBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['school_subject'].disabled = True
+        self.fields['created_by'].disabled = True
+

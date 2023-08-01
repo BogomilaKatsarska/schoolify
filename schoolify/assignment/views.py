@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
@@ -15,7 +16,7 @@ class AssignmentCookingCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.school_subject = AssignmentCooking.COOKING
-        form.instance.submitted_by = self.request.user
+        form.instance.created_by = self.request.user
 
         return super().form_valid(form)
 
@@ -28,7 +29,7 @@ class AssignmentMathematicsCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.school_subject = AssignmentMathematics.MATHEMATICS
-
+        form.instance.created_by = self.request.user
         return super().form_valid(form)
 
 
@@ -40,6 +41,7 @@ class AssignmentEnglishCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.school_subject = AssignmentEnglish.ENGLISH
+        form.instance.created_by = self.request.user
 
         return super().form_valid(form)
 
@@ -52,6 +54,7 @@ class AssignmentMusicCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.school_subject = AssignmentMusic.MUSIC
+        form.instance.created_by = self.request.user
 
         return super().form_valid(form)
 

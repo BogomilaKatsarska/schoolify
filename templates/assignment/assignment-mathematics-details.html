@@ -22,12 +22,16 @@
                 <p><span class="description">School Subject: {{ assignmentmathematics.school_subject}}</span></p>
                 <!-- car year -->
                 <p><span class="description">Solution: {{ assignmentmathematics.solution }}</span></p>
+                <p><span class="description">Created by student: {{ assignmentmathematics.created_by}}</span></p>
+
             </div>
 
 
             <div class="buttons">
+                {% if request.user == assignmentmathematics.created_by  %}
                 <a href="{% url 'assignment mathematics edit' pk=assignmentmathematics.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'assignment mathematics delete' pk=assignmentmathematics.pk %}" class="delete-button">Delete</a>
+                {% endif %}
             </div>
         </div>
     </section>

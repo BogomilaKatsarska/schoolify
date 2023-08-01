@@ -7,6 +7,7 @@ from schoolify.questions.forms import AnswerForm, QuestionForm
 from schoolify.questions.models import Question
 
 
+#TODO: ADD FULL CRUD FUNCTIONALITIES IF HAVE TIME
 class QuestionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'questions/questions.html'
     form_class = QuestionForm

@@ -29,12 +29,15 @@
                 <p><span class="description">Ingredients: {{ assignmentcooking.ingredients }}</span></p>
                 <!-- car model -->
                 <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time}}</span></p>
+                <p><span class="description">Created by student: {{ assignmentcooking.created_by}}</span></p>
             </div>
 
 
             <div class="buttons">
+                {% if request.user == assignmentcooking.created_by  %}
                 <a href="{% url 'assignment cooking edit' pk=assignmentcooking.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'assignment cooking delete' pk=assignmentcooking.pk %}" class="delete-button">Delete</a>
+                {% endif %}
             </div>
         </div>
     </section>

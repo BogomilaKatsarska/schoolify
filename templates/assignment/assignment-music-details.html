@@ -22,12 +22,15 @@
                 <p><span class="description">School Subject: {{ assignmentmusic.school_subject}}</span></p>
                 <!-- car year -->
                 <p><span class="description">Song: {{ assignmentmusic.song }}</span></p>
+                <p><span class="description">Created by student: {{ assignmentmusic.created_by}}</span></p>
+
             </div>
 
-
             <div class="buttons">
+                {% if request.user == assignmentmusic.created_by  %}
                 <a href="{% url 'assignment music edit' pk=assignmentmusic.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'assignment music delete' pk=assignmentmusic.pk %}" class="delete-button">Delete</a>
+                {% endif %}
             </div>
         </div>
     </section>
