@@ -43,7 +43,12 @@
                 <h3>Creation Date: {{ question.created_on}} </h3>
 
             </div>
-
+<div class="buttons">
+                {% if request.user == question.student  %}
+                <a href="{% url 'question edit' pk=question.pk %}" class="edit-button">Edit</a>
+                <a href="{% url 'question delete' pk=question.pk %}" class="delete-button">Delete</a>
+                {% endif %}
+            </div>
 
           <!-- Start Comments Section -->
                         {% for answer in question.answer_set.all %}
@@ -60,10 +65,26 @@
                                             </p>
                                         </div>
                                         <span>{{ answer.created_on }}</span>
+
+
                                     </div>
                                 </div>
+
                             </div>
+
+
+                             <div class="buttons">
+                            {% if request.user == answer.user %}
+                            <a href="{% url 'edit answer' question_id=answer.to_question.pk pk=answer.pk %}" class="edit-button">Edit</a>
+                            <a href="{% url 'delete answer' question_id=answer.to_question.pk pk=answer.pk %}" class="delete-button">Delete</a>
+                            {% endif %}
+                                     </div>
+
+
                         {% endfor %}
+
+
+
                         <!-- End Comments Section -->
 
                         <!-- Start Add Comments Section -->

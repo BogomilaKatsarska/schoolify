@@ -2,12 +2,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
-from schoolify.questions.forms import AnswerForm, QuestionForm
-from schoolify.questions.models import Question
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from schoolify.questions.forms import AnswerForm, QuestionForm, QuestionEditForm, AnswerEditForm
+from schoolify.questions.models import Question, Answer
 
 
-#TODO: ADD FULL CRUD FUNCTIONALITIES IF HAVE TIME
 class QuestionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'questions/questions.html'
     form_class = QuestionForm
@@ -42,6 +41,19 @@ class QuestionListView(LoginRequiredMixin, ListView):
         return self.request.GET.get('pattern', None)
 
 
+class QuestionEditView(LoginRequiredMixin, UpdateView):
+    model = Question
+    form_class = QuestionEditForm
+    template_name = "questions/questions-edit.html"
+    success_url = reverse_lazy('questions all')
+
+
+class QuestionDeleteView(LoginRequiredMixin, DeleteView):
+    model = Question
+    template_name = "questions/questions-delete.html"
+    success_url = reverse_lazy('questions all')
+
+
 @login_required
 def answer_functionality(request, question_id):
     question = Question.objects.get(pk=question_id)
@@ -56,3 +68,16 @@ def answer_functionality(request, question_id):
             new_answer_instance.save()
 
         return redirect(request.META['HTTP_REFERER'] + f"#{question_id}")
+
+
+class AnswerEditView(LoginRequiredMixin, UpdateView):
+    model = Answer
+    form_class = AnswerEditForm
+    template_name = "questions/answer-edit.html"
+    success_url = reverse_lazy('questions all')
+
+
+class AnswerDeleteView(LoginRequiredMixin, DeleteView):
+    model = Answer
+    template_name = "questions/answer-delete.html"
+    success_url = reverse_lazy('questions all')

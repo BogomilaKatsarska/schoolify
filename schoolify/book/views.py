@@ -59,6 +59,8 @@ class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     fields = '__all__'
     success_url = reverse_lazy('books list')
 
+
+
 '''
 1999999998 - superuser
 1231111111 - student

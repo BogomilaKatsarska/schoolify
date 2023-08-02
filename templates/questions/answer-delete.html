@@ -1,0 +1,26 @@
+{% load static %}
+{% include 'common/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <title>Delete Answer</title>
+</head>
+
+    <section id="delete-page" class="auth">
+        <form method="post" action="{% url 'delete answer' pk=answer.pk question_id=answer.to_question.pk  %}">
+            <div class="container">
+
+                <h1>Are you sure you want to delete your answer"{{ answer.comment_text }}"?</h1>
+                    {{ form }}
+                    <input type="submit" value="Confirm">
+                {% csrf_token %}
+            </div>
+        </form>
+    </section>
+
+
+</html>
