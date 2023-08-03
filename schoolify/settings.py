@@ -194,3 +194,15 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 #     pass
 
 #with alt we can mark many rows in diff places
+
+
+'''
+GIT COMMANDS:
+git clone git@github.com:BogomilaKatsarska/pet_stagram.git --> clones what is in GitHub to your local
+git pull
+git status --> show the newly created files on your pc
+git add to_delete.txt --> adds files that we would like to commit to github. Should be followed by git commit
+git add . --> adds the current directory
+git commit -m "added to_delete files"((-m means message)) --> commit locally
+git push --> adds to GitHub
+'''
