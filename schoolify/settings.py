@@ -184,3 +184,4 @@ git add . --> adds the current directory
 git commit -m "added to_delete files"((-m means message)) --> commit locally
 git push --> adds to GitHub
 '''
+#TODO: check GitHub and GitBash
