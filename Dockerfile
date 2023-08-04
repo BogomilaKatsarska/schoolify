@@ -5,6 +5,7 @@ RUN apt update -y \
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONBUFFERED 1
+
 ENV HOME=C:\home\app
 ENV APP_HOME=C:\home\app\web
 ENV STATICFILES_HOME=C:\tmp\staticfiles

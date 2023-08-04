@@ -9,7 +9,7 @@
 #    ports:
 #      - "8000:8000"
 #    env_file:
-#      - ./envs/.env
+#      - ./schoolify/envs/.env
 #    volumes:
 #      - /tmp/app-resources/static:/app/static_files
 #    platform: linux/amd64

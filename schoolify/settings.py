@@ -20,7 +20,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = bool(os.environ.get('DEBUG'))
 
-
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 INSTALLED_APPS = [
@@ -113,6 +112,8 @@ AUTH_USER_MODEL = 'auth_app.AppUser'
 LOGIN_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('sign in')
 
+# STATIC_ROOT = '/tmp/schoolify/staticfiles'
+
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
@@ -185,3 +186,4 @@ git commit -m "added to_delete files"((-m means message)) --> commit locally
 git push --> adds to GitHub
 '''
 #TODO: check GitHub and GitBash
+#TODO: env should not be included in GitHub
