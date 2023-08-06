@@ -16,11 +16,12 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-*w7rzs_u7$cqg^r59px-7v7-m1#_8j@tghhx$q9c*%=24v#auz'
 
-DEBUG = bool(os.environ.get('DEBUG'))
-
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+DEBUG = True
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -69,12 +70,12 @@ WSGI_APPLICATION = 'schoolify.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'schoolify_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Bogi1995',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
