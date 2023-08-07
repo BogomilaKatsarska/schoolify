@@ -6,11 +6,15 @@ from schoolify.auth_app.validators import validate_len_personal_number, validate
     image_size_validator_10mb, validate_capitalized
 
 
-#1:49:33 starts lecture
 class AppUser(AbstractBaseUser, PermissionsMixin):
+    #TODO:EDIT BELOW
+    # MAX_PERSONAL_NUMBER = 9999999999
     personal_number = models.PositiveIntegerField(
         unique=True,
-        validators=(validate_len_personal_number,),
+        validators=(
+            validate_len_personal_number,
+            # MaxValueValidator(MAX_PERSONAL_NUMBER),
+        ),
         null=False,
         blank=False,
     )

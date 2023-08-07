@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
 from schoolify.auth_app.validators import image_size_validator_10mb
 from schoolify.utils.mixins import CreatedAndUpdatedInfoMixIn
 
@@ -42,7 +41,6 @@ class AssignmentBaseModel(CreatedAndUpdatedInfoMixIn):
         null=False,
         blank=False,
     )
-
 
     def __str__(self):
         return f'{self.assignment_name} in {self.school_subject}'

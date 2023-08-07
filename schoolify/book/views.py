@@ -1,6 +1,5 @@
 import datetime
 from datetime import date
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect
@@ -58,11 +57,3 @@ class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = Book
     fields = '__all__'
     success_url = reverse_lazy('books list')
-
-
-
-'''
-1999999998 - superuser
-1231111111 - student
-
-'''

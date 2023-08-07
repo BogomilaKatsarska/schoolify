@@ -26,3 +26,6 @@ def allow_groups(groups=None):
         return decorator(func)
     return decorator
 
+#TODO: prevent SQL injection by using ORM
+#TODO: parameter tampering --> problem if we do not make validations for access
+#TODO: prevent cross-site request forgery with csrf

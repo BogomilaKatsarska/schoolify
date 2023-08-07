@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
@@ -41,17 +41,31 @@ class QuestionListView(LoginRequiredMixin, ListView):
         return self.request.GET.get('pattern', None)
 
 
-class QuestionEditView(LoginRequiredMixin, UpdateView):
+class QuestionEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Question
     form_class = QuestionEditForm
     template_name = "questions/questions-edit.html"
     success_url = reverse_lazy('questions all')
 
+    def test_func(self):
+        question_obj = self.get_object()
+        user_obj = self.request.user
+        if question_obj.student == user_obj:
+            return True
+        return False
 
-class QuestionDeleteView(LoginRequiredMixin, DeleteView):
+
+class QuestionDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Question
     template_name = "questions/questions-delete.html"
     success_url = reverse_lazy('questions all')
+
+    def test_func(self):
+        question_obj = self.get_object()
+        user_obj = self.request.user
+        if question_obj.student == user_obj:
+            return True
+        return False
 
 
 @login_required
@@ -70,14 +84,28 @@ def answer_functionality(request, question_id):
         return redirect(request.META['HTTP_REFERER'] + f"#{question_id}")
 
 
-class AnswerEditView(LoginRequiredMixin, UpdateView):
+class AnswerEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Answer
     form_class = AnswerEditForm
     template_name = "questions/answer-edit.html"
     success_url = reverse_lazy('questions all')
 
+    def test_func(self):
+        answer_obj = self.get_object()
+        user_obj = self.request.user
+        if answer_obj.user == user_obj:
+            return True
+        return False
 
-class AnswerDeleteView(LoginRequiredMixin, DeleteView):
+
+class AnswerDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Answer
     template_name = "questions/answer-delete.html"
     success_url = reverse_lazy('questions all')
+
+    def test_func(self):
+        answer_obj = self.get_object()
+        user_obj = self.request.user
+        if answer_obj.user == user_obj:
+            return True
+        return False

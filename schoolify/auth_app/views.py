@@ -1,11 +1,13 @@
-from django.contrib.auth import login
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import login, get_user_model
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 from schoolify.auth_app.forms import SignUpForm, ProfileEditForm
 from schoolify.auth_app.models import Profile
+
+UserModel = get_user_model()
 
 
 def index(request):
@@ -39,7 +41,7 @@ class SignOutView(LoginRequiredMixin, LogoutView):
     next_page = reverse_lazy('index')
 
 
-class ProfileEditView(LoginRequiredMixin, UpdateView):
+class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm
     template_name = "auth/profile-edit.html"
@@ -47,14 +49,27 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse('profile details', kwargs={'pk': self.object.pk})
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk
+    #TODO: check what is gitignore
+    #TODO: env vars
 
-class ProfileDeleteView(LoginRequiredMixin, DeleteView):
+
+class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Profile
     template_name = "auth/profile-delete.html"
     success_url = reverse_lazy('index')
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk
 
-class ProfileDetailsView(LoginRequiredMixin, DetailView):
+
+class ProfileDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Profile
     template_name = "auth/profile-details.html"
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk

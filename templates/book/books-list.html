@@ -13,6 +13,7 @@
 <body>
 
 <div id="box">
+{#book.add_book, change_ delete_ view_ user.has_perm('book.add_book')#}
 {% if perms.book.add_book %}
 <a href="{% url 'book create' %}">Add new book</a>
 {% endif %}

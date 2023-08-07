@@ -1,8 +1,6 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, DetailView
-
 from schoolify.assignment.forms import AssignmentEnglishEditForm, AssignmentMusicEditForm, \
     AssignmentMathematicsEditForm, AssignmentCookingEditForm
 from schoolify.assignment.models import AssignmentCooking, AssignmentMathematics, AssignmentEnglish, AssignmentMusic
@@ -103,56 +101,112 @@ class AssignmentCookingListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class AssignmentMusicDeleteView(LoginRequiredMixin, DeleteView):
+class AssignmentMusicDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = AssignmentMusic
     template_name = "assignment/assignment-music-delete.html"
     success_url = reverse_lazy('assignment music list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentEnglishDeleteView(LoginRequiredMixin, DeleteView):
+
+class AssignmentEnglishDeleteView(LoginRequiredMixin, UserPassesTestMixin,  DeleteView):
     model = AssignmentEnglish
     template_name = "assignment/assignment-english-delete.html"
     success_url = reverse_lazy('assignment english list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentMathematicsDeleteView(LoginRequiredMixin, DeleteView):
+
+class AssignmentMathematicsDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = AssignmentMathematics
     template_name = "assignment/assignment-mathematics-delete.html"
     success_url = reverse_lazy('assignment mathematics list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentCookingDeleteView(LoginRequiredMixin, DeleteView):
+
+class AssignmentCookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = AssignmentCooking
     template_name = "assignment/assignment-cooking-delete.html"
     success_url = reverse_lazy('assignment cooking list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentMusicEditView(LoginRequiredMixin, UpdateView):
+
+class AssignmentMusicEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AssignmentMusic
     form_class = AssignmentMusicEditForm
     template_name = "assignment/assignment-music-edit.html"
     success_url = reverse_lazy('assignment music list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentEnglishEditView(LoginRequiredMixin, UpdateView):
+
+class AssignmentEnglishEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AssignmentEnglish
     form_class = AssignmentEnglishEditForm
     template_name = "assignment/assignment-english-edit.html"
     success_url = reverse_lazy('assignment english list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentMathematicsEditView(LoginRequiredMixin, UpdateView):
+
+class AssignmentMathematicsEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AssignmentMathematics
     form_class = AssignmentMathematicsEditForm
     template_name = "assignment/assignment-mathematics-edit.html"
     success_url = reverse_lazy('assignment mathematics list')
 
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
-class AssignmentCookingEditView(LoginRequiredMixin, UpdateView):
+
+class AssignmentCookingEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AssignmentCooking
     form_class = AssignmentCookingEditForm
     template_name = "assignment/assignment-cooking-edit.html"
     success_url = reverse_lazy('assignment cooking list')
+
+    def test_func(self):
+        assignment_obj = self.get_object()
+        user_obj = self.request.user
+        if assignment_obj.created_by == user_obj:
+            return True
+        return False
 
 
 class AssignmentMusicDetailsView(LoginRequiredMixin, DetailView):
