@@ -37,7 +37,6 @@ class SignUpForm(UserCreationForm):
             last_name=last_name,
             school_grade=school_grade,
             user=user,
-            # user_id=user.pk,
         )
         if commit:
             profile.save()

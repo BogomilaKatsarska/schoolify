@@ -10,7 +10,7 @@ class AssignmentBaseModel(CreatedAndUpdatedInfoMixIn):
     class Meta:
         abstract = True
 
-    MAX_SCHOOL_SUBJECT_LEN = 20
+    MAX_SCHOOL_SUBJECT_LEN = 11
 
     MATHEMATICS = 'Mathematics'
     ENGLISH = 'English'
