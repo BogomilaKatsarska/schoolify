@@ -15,6 +15,8 @@ class AppUserAdmin(UserAdmin):
     list_filter = ('date_joined',)
     search_fields = ("personal_number", )
     add_form = SignUpForm
+    #TODO: check petstagram form =
+    #TODO: bootstrap
     fieldsets = (
         (None, {'fields': ('personal_number', 'password')}),
         ('Permissions', {
