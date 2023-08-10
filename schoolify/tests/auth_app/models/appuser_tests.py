@@ -1,6 +1,5 @@
 from django.core.exceptions import ValidationError
 from django.test import TestCase
-
 from schoolify.auth_app.models import AppUser
 
 
@@ -50,6 +49,4 @@ class AppUserModelTests(TestCase):
             appuser.full_clean()
             appuser.save()
         self.assertIsNotNone(context.exception)
-
-
 

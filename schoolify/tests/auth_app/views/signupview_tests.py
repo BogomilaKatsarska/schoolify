@@ -1,4 +1,4 @@
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import check_password
 from django.test import TestCase
 from django.urls import reverse
 from schoolify.auth_app.models import Profile, AppUser
@@ -35,4 +35,3 @@ class SignUpViewTests(TestCase):
 
         expected_url = reverse('index')
         self.assertRedirects(response, expected_url)
-

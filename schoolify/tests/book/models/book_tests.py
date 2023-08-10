@@ -26,4 +26,3 @@ class BookModelTests(TestCase):
         self.assertEqual(book.number_of_pages, 300)
         self.assertEqual(book.available_from, datetime.date.today())
         self.assertIsNone(book.cover_image)
-

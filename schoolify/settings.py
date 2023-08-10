@@ -14,6 +14,8 @@ from pathlib import Path
 
 from django.urls import reverse_lazy
 
+from schoolify.auth_app.middleware import redirect_to_index_on_403_middleware
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*w7rzs_u7$cqg^r59px-7v7-m1#_8j@tghhx$q9c*%=24v#auz'
@@ -45,6 +47,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#TODO: add pop up: https://forum.djangoproject.com/t/how-to-create-dynamic-modals-popups-in-template/8338dd
+    'schoolify.auth_app.middleware.redirect_to_index_on_403_middleware',
 ]
 
 ROOT_URLCONF = 'schoolify.urls'
@@ -78,6 +82,13 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+if DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        },
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -175,17 +186,3 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 #     pass
 
 #with alt we can mark many rows in diff places
-
-
-'''
-GIT COMMANDS:
-git clone git@github.com:BogomilaKatsarska/pet_stagram.git --> clones what is in GitHub to your local
-git pull --> takes the changes from GitHub repo and applies them to yours
-git status --> show the newly created files on your pc
-git add to_delete.txt --> adds files that we would like to commit to github. Should be followed by git commit
-git add . --> adds the current directory
-git commit -m "added to_delete files"((-m means message)) --> commit locally
-git push --> adds to GitHub
-'''
-#TODO: check GitHub and GitBash
-#TODO: env should not be included in GitHub
