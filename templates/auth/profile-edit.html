@@ -1,16 +1,6 @@
 {% extends 'common/base.html' %}
 {% load static %}
-{#{% include 'common/base.html' %}#}
 
-{#<!DOCTYPE html>#}
-{#<html lang="en">#}
-{##}
-{#<head>#}
-{#    <meta charset="UTF-8">#}
-{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
-{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
-{#    <title>Profile Edit</title>#}
-{#</head>#}
 {% block page_content %}
 <body>
 <div id="box">
@@ -20,7 +10,7 @@
             <div class="container">
 
                 <h1>Edit Profile</h1>
-{{ form }}
+                    {{ form }}
                 {% csrf_token %}
                 <input class="btn submit" type="submit" value="Profile Edit">
             </div>
@@ -28,5 +18,5 @@
     </section>
 </div>
 </body>
-</html>
+
 {% endblock %}

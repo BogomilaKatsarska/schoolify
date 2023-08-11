@@ -39,7 +39,9 @@ class AnswerForm(forms.ModelForm):
 class AnswerEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # self.fields['user'].disabled = True
+        self.fields['user'].disabled = True
+        self.fields['to_question'].disabled = True
+
 
     class Meta:
         model = Answer

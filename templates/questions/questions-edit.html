@@ -1,15 +1,8 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block page_content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Question Edit</title>
-</head>
 
 <body>
 <div id="box">
@@ -17,15 +10,14 @@
     <section id="create-page" class="auth">
         <form method="post" action="{% url 'question edit' pk=question.pk %}">
             <div class="container">
-
-                <h1>Edit  '{{question.question }}' </h1>
-
-{{ form }}
-                {% csrf_token %}
+                <h1>Edit  "{{question.question }}" </h1>
+                {{ form }}
                 <input class="btn submit" type="submit" value="Edit Assignment">
+                    {% csrf_token %}
             </div>
         </form>
     </section>
 </div>
 </body>
-</html>
+
+{% endblock %}

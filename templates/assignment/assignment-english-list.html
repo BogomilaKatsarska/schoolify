@@ -1,12 +1,7 @@
-{% include 'common/base.html' %}
+{% extends 'common/base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List of assignments</title>
-</head>
-<body>
+{% block page_content %}
 
 
 {% if object_list %}
@@ -56,5 +51,5 @@
     </span>
 </div>
 {% endif %}
-</body>
-</html>
+
+{% endblock %}

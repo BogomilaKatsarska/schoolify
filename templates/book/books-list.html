@@ -1,15 +1,7 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <title>BookCollection</title>
-
-</head>
+{% block page_content %}
 
 <section>
 
@@ -22,10 +14,15 @@
 <form method="get" action="{% url 'books list' %}">
      <div style="width: 30%" class="container">
         <input name="pattern" placeholder="Search a book by title.."/>
+
         <input class="btn" type="submit" value="Search">
      </div>
 </form>
-        <h2>
+
+
+
+
+        <h2 style="float:right">
         {% if perms.book.add_book %}
  <div class="buttons">
                 <a href="{% url 'book create' %}" class="edit-button">Add new book</a>
@@ -45,7 +42,7 @@
             <div class="car-header">
             {% if b.cover_image %}
                     <div class="image-wrap">
-                        <img src="{{ b.cover_image }}"
+                        <img style="float:right" width="150" height="250" src="{{ b.cover_image }}"
                              alt=" image of {{ b.name }}">
                     </div>
                 {% endif %}
@@ -56,9 +53,9 @@
                 <h1>Number of pages: {{ b.number_of_pages }}</h1>
                 <h1>Available from: {{ b.available_from }}</h1>
 
-            <a href="{% url 'book enquiry' b.pk %}">
-                                    CLICK HERE TO BOOK THIS BOOK FOR 5 DAYS
-                                </a>
+                    <div class="buttons">
+                                <a href="{% url 'book enquiry' b.pk %}" class="edit-button">BOOK THIS BOOK FOR 5 DAYS</a>
+                    </div>
 
             </div>
      {% endfor %}
@@ -69,6 +66,5 @@
 
         </section>
 {% csrf_token %}
-</div>
-</body>
-</html>
+
+{% endblock %}

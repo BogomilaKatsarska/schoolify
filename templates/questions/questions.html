@@ -1,20 +1,7 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-
-<body>
-
-<section id="create-page" class="auth">
-<form method="get" action="{% url 'questions all' %}">
-     <div class="container">
-        <input name="pattern" placeholder="Search a question by question name..."/>
-        <input class="btn" type="submit" value="Search">
-     </div>
-</form>
-</section>
+{% block page_content %}
 
 
 <section id="create-page" class="auth">
@@ -143,6 +130,4 @@
 
 {% csrf_token %}
 
-</div>
-</body>
-</html>
+{% endblock %}
