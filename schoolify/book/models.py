@@ -54,6 +54,12 @@ class Book(models.Model):
         null=True,
         blank=True,
     )
+    last_booked_by = models.ForeignKey(
+        UserModel,
+        on_delete=models.DO_NOTHING,
+        null=True,
+        blank=True,
+    )
 
     def __str__(self):
         return f'{self.name} is written by {self.author}'

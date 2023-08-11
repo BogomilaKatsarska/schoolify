@@ -31,6 +31,7 @@ def book_a_book_functionality(request, book_id):
     book = Book.objects.get(pk=book_id)
     if book.available_from > date.today():
         book.available_from += datetime.timedelta(days=5)
+        book.last_booked_by = request.user
 
     else:
         book.available_from = date.today() + datetime.timedelta(days=5)

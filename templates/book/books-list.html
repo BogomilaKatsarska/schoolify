@@ -52,6 +52,9 @@
                 <h1>School subject: {{ b.school_subject }}</h1>
                 <h1>Number of pages: {{ b.number_of_pages }}</h1>
                 <h1>Available from: {{ b.available_from }}</h1>
+            {% if b.last_booked_by != None %}
+                <h1>Last booked by: {{ b.last_booked_by }}</h1>
+            {% endif %}
 
                     <div class="buttons">
                                 <a href="{% url 'book enquiry' b.pk %}" class="edit-button">BOOK THIS BOOK FOR 5 DAYS</a>
