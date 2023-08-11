@@ -1,18 +1,19 @@
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
+from django.core.validators import MaxValueValidator
 from django.db import models
 from schoolify.auth_app.managers import AppUserManager
 from schoolify.auth_app.validators import validate_len_personal_number, validate_school_year_range, \
-    image_size_validator_10mb, validate_capitalized
+    validate_capitalized
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
-    #TODO:EDIT BELOW: MAX_PERSONAL_NUMBER = 9999999999
-    personal_number = models.PositiveIntegerField(
+    MAX_PERSONAL_NUMBER = 9912319999
+    personal_number = models.BigIntegerField(
         unique=True,
         validators=(
             validate_len_personal_number,
-            # MaxValueValidator(MAX_PERSONAL_NUMBER),
+            MaxValueValidator(MAX_PERSONAL_NUMBER),
         ),
         null=False,
         blank=False,

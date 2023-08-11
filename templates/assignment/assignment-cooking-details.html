@@ -15,12 +15,9 @@
     <section id="car-details">
         <h1>Assignment Details</h1>
         <div class="info-section">
-            <div class="profilePage">
-                <img src="{{ assignmentcooking.dish_image}}"
-                     alt="Image of {{ assignmentcooking.recipe_name }}">
-            </div>
             <div class="car-header">
-                <h1>{{ assignmentcooking.assignment_name}}</h1>
+
+                <h1>Assignment name: {{ assignmentcooking.assignment_name}}</h1>
                 <!-- car model -->
                 <p><span class="description">School Subject: {{ assignmentcooking.school_subject}}</span></p>
                 <!-- car year -->
@@ -30,6 +27,12 @@
                 <!-- car model -->
                 <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time}}</span></p>
                 <p><span class="description">Created by student: {{ assignmentcooking.created_by}}</span></p>
+
+                {% if assignmentcooking.dish_image %}
+                    <img class="car-img" src="{{ assignmentcooking.dish_image }}" alt='{{ assignmentcooking.assignment_name }}'/>
+                    {% else %}
+                <p><span class="description">Dish image: Not uploaded</span></p>
+                {% endif %}
             </div>
 
 

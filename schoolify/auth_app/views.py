@@ -53,8 +53,6 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         obj = self.get_object()
         return obj.pk == self.request.user.pk
     #TODO: check what is gitignore
-    #TODO: env vars should not be in GitHub
-    #TODO: get_form_kwargs for pics
 
 
 class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
