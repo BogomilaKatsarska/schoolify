@@ -14,8 +14,6 @@ from pathlib import Path
 
 from django.urls import reverse_lazy
 
-from schoolify.auth_app.middleware import redirect_to_index_on_403_middleware
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*w7rzs_u7$cqg^r59px-7v7-m1#_8j@tghhx$q9c*%=24v#auz'
@@ -47,8 +45,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-#TODO: add pop up: https://forum.djangoproject.com/t/how-to-create-dynamic-modals-popups-in-template/8338dd
-    'schoolify.auth_app.middleware.redirect_to_index_on_403_middleware',
 ]
 
 ROOT_URLCONF = 'schoolify.urls'
@@ -125,15 +121,13 @@ LOGIN_URL = reverse_lazy('index')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('sign in')
 
-# STATIC_ROOT = '/tmp/schoolify/staticfiles'
-
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
 
-MEDIA_URL = '/media/'
+MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 

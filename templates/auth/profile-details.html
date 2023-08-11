@@ -15,18 +15,18 @@
     <section id="car-details">
         <h1>Profile Details</h1>
         <div class="info-section">
-            <div class="car-header">
+            <div class="car-header" style="padding: 30px">
+                {% if profile.profile_picture %}
+                    <img class="car-img" src="{{ profile.profile_picture }}" alt='{{ profile.first_name }}'/>
+                    {% else %}
+                <p><span class="description">Profile Picture: None</span></p>
+                {% endif %}
                 <p><span class="description">First Name: {{ profile.first_name }}</span></p
                 <p><span class="description">Last Name: {{ profile.last_name}}</span></p>
                 <p><span class="description">School Grade: {{ profile.school_grade }}</span></p>
                 <p><span class="description">Personal Number: {{ profile.user.personal_number}}</span></p>
-                {% if profile.user.profile_picture %}
-                    #TODO: fix pic
-                <p><span class="description">Profile Picture: {{ profile.user.profile_picture}}</span></p>
-                    {% else %}
-                <p><span class="description">Profile Picture: None</span></p>
 
-                {% endif %}
+            </div>
             </div>
 
             <div class="buttons">

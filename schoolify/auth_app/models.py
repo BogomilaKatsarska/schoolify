@@ -7,8 +7,7 @@ from schoolify.auth_app.validators import validate_len_personal_number, validate
 
 
 class AppUser(AbstractBaseUser, PermissionsMixin):
-    #TODO:EDIT BELOW
-    # MAX_PERSONAL_NUMBER = 9999999999
+    #TODO:EDIT BELOW: MAX_PERSONAL_NUMBER = 9999999999
     personal_number = models.PositiveIntegerField(
         unique=True,
         validators=(
@@ -47,9 +46,7 @@ class Profile(models.Model):
         null=True,
         blank=True,
     )
-    profile_picture = models.ImageField(
-        upload_to='profile-pictures',
-        validators=(image_size_validator_10mb,),
+    profile_picture = models.URLField(
         null=True,
         blank=True,
     )

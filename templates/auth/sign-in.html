@@ -1,9 +1,39 @@
 {% include 'common/base.html' %}
 
-<form action="{% url 'sign in' %}" method="post">
-    {{ form.as_p }}
-    <input name="next" type="hidden" value="{{ next }}">
-    <input class="btn" type="submit" value="Sign in">
-    {% csrf_token %}
-</form>
+{% load static %}
+<html>
+<head>
+  <title>Schoolify</title>
+  <link href="{% static 'css/main_tate.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/forms.css'%}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/animenu.css'%}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" >
+<div class="wrapper">
 
+<table border="0" cellpadding="0" cellspacing="0" width=520 height=400 class='form-box'>
+  <tr>
+    <td colspan="2" class="box-title" valign="top">
+      <table cellpadding="2" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td width="100%" class="form-rows-noborder">
+
+            <form action="{% url 'sign in' %}" method="post">
+                {{ form.as_p}}
+                <input name="next" type="hidden" value="{{ next }}">
+                <input class="btn" type="submit" value="Sign in">
+                {% csrf_token %}
+            </form>
+
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+</div>
+</body>
+</html>

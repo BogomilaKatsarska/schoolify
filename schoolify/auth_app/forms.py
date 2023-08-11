@@ -6,7 +6,6 @@ from schoolify.auth_app.validators import validate_capitalized, validate_school_
 
 UserModel = get_user_model()
 
-
 class SignUpForm(UserCreationForm):
     MAX_FIRST_NAME = 15
     MAX_LAST_NAME = 15
@@ -26,6 +25,11 @@ class SignUpForm(UserCreationForm):
         model = UserModel
         fields = (UserModel.USERNAME_FIELD, 'password1', 'password2', 'first_name', 'last_name', 'school_grade')
         field_classes = {'username': UsernameField}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
 
     def save(self, commit=True):
         user = super().save(commit=commit)
