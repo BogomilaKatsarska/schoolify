@@ -17,7 +17,7 @@ class AppUserAdmin(UserAdmin):
     add_form = SignUpForm
     #TODO: check petstagram form =
     fieldsets = (
-        (None, {'fields': ('personal_number', 'password')}),
+        ('Personal number', {'fields': ('personal_number', 'password')}),
         ('Permissions', {
             'fields': ('is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),

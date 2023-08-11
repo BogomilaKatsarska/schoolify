@@ -94,8 +94,7 @@ class AssignmentCooking(AssignmentBaseModel):
         null=False,
         blank=False,
     )
-    #TODO: fix timing
-    preparation_time = models.TimeField(
+    preparation_time = models.DurationField(
         help_text='Please fill in the full reparation time, together with cooking time.',
         null=False,
         blank=False,
