@@ -131,18 +131,14 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
-
-#TODO: fix mediafiles
 #extra_context --> static context
 #template_name
-#model
 #modelform_factory
 # def get_context_data - method, which returns context --> dynamic context
 #       context = super().get_context_data(**kwargs)
 #       context['employees'] = Employee.objects.all()
 #       return context
 #get_queryset
-#object_list when we use ListView
 #CTRL + TAB -> to switch between diff files
 #form_class
 # def get_form()

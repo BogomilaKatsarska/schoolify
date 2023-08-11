@@ -11,7 +11,7 @@ UserModel = get_user_model()
 
 
 def index(request):
-    return render(request, 'common/base.html')
+    return render(request, 'common/index.html')
 
 
 class SignUpView(CreateView):

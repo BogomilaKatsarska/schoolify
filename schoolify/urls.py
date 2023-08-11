@@ -12,7 +12,10 @@ urlpatterns = [
     path('assignment/', include('schoolify.assignment.urls')),
     path('questions/', include('schoolify.questions.urls')),
     path('books/', include('schoolify.book.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 # http://127.0.0.1:8000/auth/sign-up/ --> hide field widgets

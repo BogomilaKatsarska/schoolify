@@ -98,7 +98,9 @@
                             <form method="post" action="{% url 'answer' question_id=question.pk %}">
                                 {{ answerform }}
                                 {% csrf_token %}
-                                <button type="submit">Sumit Answer</button>
+                                <div class="buttons">
+                                <button type="submit" class="edit-button">Submit</button>
+                                </div>
                             </form>
                             <!-- End Add Comments Form -->
 

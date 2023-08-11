@@ -1,14 +1,7 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-    <title>Delete Assignment</title>
-</head>
+{% block page_content %}
 
     <section id="delete-page" class="auth">
         <form method="post" action="{% url 'assignment english delete' pk=assignmentenglish.pk %}">
@@ -16,7 +9,7 @@
 
                 <h1>Are you sure you want to delete your assignment: "{{ assignmentenglish.assignment_name }}"?</h1>
                     {{ form }}
-                    <input type="submit" value="Confirm">
+                    <input class="btn" type="submit" value="Confirm">
                 {% csrf_token %}
             </div>
         </form>
@@ -24,3 +17,4 @@
 
 
 </html>
+{% endblock %}

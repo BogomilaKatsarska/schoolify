@@ -8,49 +8,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <title>BookCollection</title>
+
 </head>
+
+<section>
+
 
 <body>
 
 <div id="box">
-{#book.add_book, change_ delete_ view_ user.has_perm('book.add_book')#}
-{% if perms.book.add_book %}
-<a href="{% url 'book create' %}">Add new book</a>
-{% endif %}
-<section>
 
+<header>
 <form method="get" action="{% url 'books list' %}">
-     <div class="container">
+     <div style="width: 30%" class="container">
         <input name="pattern" placeholder="Search a book by title.."/>
         <input class="btn" type="submit" value="Search">
      </div>
 </form>
-</section>
+        <h2>
+        {% if perms.book.add_book %}
+ <div class="buttons">
+                <a href="{% url 'book create' %}" class="edit-button">Add new book</a>
+            </div>
+        {% endif %}
+
+            </h2>
+    </header>
 
 
  {% if object_list %}
 
-        <section id="catalogue">
-            <div class="car-header">
-            <h1>
-            <ol>
-                <li>Total Books: {{ total_books }}</li>
-                <li>Total English Books: {{ total_english_books }}</li>
-                <li>Total Mathematics Books: {{ total_mathematics_books }}</li>
-                <li>Total Music Books: {{ total_music_books }}</li>
-                <li>Total Cooking Books: {{ total_cooking_books }}</li>
-            </ol>
-            </h1>
-                <div class="car-header">
 
             {% for b in object_list %}
 <div class="info-section">
 
             <div class="car-header">
+            {% if b.cover_image %}
                     <div class="image-wrap">
                         <img src="{{ b.cover_image }}"
                              alt=" image of {{ b.name }}">
                     </div>
+                {% endif %}
                 <h1>Name: {{ b.name }}</h1>
                 <h1>Author: {{ b.author }}</h1>
                 <h1>Description: {{ b.description}} </h1>
@@ -58,18 +56,6 @@
                 <h1>Number of pages: {{ b.number_of_pages }}</h1>
                 <h1>Available from: {{ b.available_from }}</h1>
 
-{#                                <a href="{% url 'book enquiry' b.pk %}">#}
-{#                                    <svg aria-label="Book This Book" class="_8-yf5 " color="#262626" fill="#262626"#}
-{#                                         height="24" role="img" viewBox="0 0 48 48" width="24">#}
-{#                                        <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3#}
-{#										3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6#}
-{#										1 1.2 1.1h.2c.5 0 1-.3#}
-{#										1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2#}
-{#										6.1h35.5L18 18.7 5.2 6.1zm18.7#}
-{#										33.6l-4.4-18.4L42.4 8.6 23.9 39.7z">#}
-{#                                        </path>#}
-{#                                    </svg>#}
-{#                                </a>#}
             <a href="{% url 'book enquiry' b.pk %}">
                                     CLICK HERE TO BOOK THIS BOOK FOR 5 DAYS
                                 </a>

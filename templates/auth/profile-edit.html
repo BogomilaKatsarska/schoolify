@@ -1,16 +1,17 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
+{#{% include 'common/base.html' %}#}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Profile Edit</title>
-</head>
-
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{##}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <link rel="stylesheet" href="{% static 'css/style.css' %}">#}
+{#    <title>Profile Edit</title>#}
+{#</head>#}
+{% block page_content %}
 <body>
 <div id="box">
 
@@ -28,3 +29,4 @@
 </div>
 </body>
 </html>
+{% endblock %}

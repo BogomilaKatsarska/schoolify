@@ -1,1 +1,71 @@
-{% include 'common/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+    <title>Schoolfy</title>
+
+</head>
+<body>
+
+{% include 'common/nav.html' %}
+
+
+<main>
+
+
+        <nav class="animenu">
+
+        	<button class="animenu__toggle">
+                <span class="animenu__toggle__bar"></span>
+                <span class="animenu__toggle__bar"></span>
+                <span class="animenu__toggle__bar"></span>
+            </button>
+
+        	<ul class="animenu__nav">
+
+                {% if request.user.is_authenticated%}
+                    <li>
+                        <a href="#">Assignments</a>
+                        <ul class="animenu__nav__child">
+                            <li><a href="{% url 'assignment music list' %}">Music All Submitted</a></li>
+                            <li><a href="{% url 'assignment english list' %}">English All Submitted</a></li>
+                            <li><a href="{% url 'assignment mathematics list' %}">Mathematics All Submitted</a></li>
+                            <li><a href="{% url 'assignment cooking list' %}">Cooking All Submitted</a></li>
+                            <li><a href='#' style="padding: 1px"> </a></li>
+                            <li><a href="{% url 'assignment music create' %}">Music Submit</a></li>
+                            <li><a href="{% url 'assignment english create' %}">English Submit</a></li>
+                            <li><a href="{% url 'assignment mathematics create' %}">Mathematics Submit</a></li>
+                            <li><a href="{% url 'assignment cooking create' %}">Cooking Submit</a></li>
+                      </ul>
+                    </li>
+
+                    <a href="{%  url 'questions all' %}">Q&A</a>
+                    <a href="{% url 'books list' %}">Books</a>
+                    <a href="{% url 'sign out' %}">Sign Out</a>
+                    <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
+                {% else %}
+                     <a href="{%  url 'sign in' %}">Sign In</a>
+                     <a href="{% url 'sign up' %}">Sign Up</a>
+                {% endif %}
+
+
+            </ul>
+        </nav>
+
+<div class="music-img">
+            <img style=" width: 1900px; height: 700px;" src="{% static 'images/graduation-hat.jpg' %}" alt="music-icon">
+        </div>
+
+<img style=" width: 1900px; height: 700px;" src="{% static 'images/graduation-hat.jpg' %}" alt="music-icon">
+
+    {% block page_content %}
+    {% endblock %}
+</main>
+
+{% include 'common/footer.html' %}
+
+</body>
+</html>

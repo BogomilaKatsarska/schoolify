@@ -12,18 +12,6 @@ class BooksListView(LoginRequiredMixin, ListView):
     model = Book
     template_name = 'book/books-list.html'
     paginate_by = 3
-    total_books = Book.objects.count()
-    total_english_books = Book.objects.filter(school_subject='English').count()
-    total_mathematics_books = Book.objects.filter(school_subject='Mathematics').count()
-    total_music_books = Book.objects.filter(school_subject='Music').count()
-    total_cooking_books = Book.objects.filter(school_subject='Cooking').count()
-    extra_context = {
-        'total_books': total_books,
-        'total_english_books': total_english_books,
-        'total_mathematics_books': total_mathematics_books,
-        'total_music_books': total_music_books,
-        'total_cooking_books': total_cooking_books,
-    }
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -57,3 +45,4 @@ class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = Book
     fields = '__all__'
     success_url = reverse_lazy('books list')
+

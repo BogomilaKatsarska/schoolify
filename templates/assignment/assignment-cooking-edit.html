@@ -15,7 +15,7 @@
 <div id="box">
 
     <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment cooking edit' pk=assignmentcooking.pk %}">
+        <form method="post" action="{% url 'assignment cooking edit' pk=assignmentcooking.pk %}" enctype="multipart/form-data">
             <div class="container">
 
                 <h1>Edit {{ assignmentcooking.assignment_name }} Assignment</h1>

@@ -1,16 +1,7 @@
+{% extends 'common/base.html' %}
 {% load static %}
-{% include 'common/base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Create Cooking Assignment</title>
-</head>
-
+{% block page_content %}
 <body>
 <div id="box">
 
@@ -18,7 +9,7 @@
 
 
     <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment cooking create' %}">
+        <form method="post" action="{% url 'assignment cooking create' %}" enctype="multipart/form-data">
             <div class="container">
                 {{ form }}
                 {% csrf_token %}
@@ -29,4 +20,4 @@
 </div>
 </body>
 </html>
-
+{% endblock %}
