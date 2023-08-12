@@ -59,18 +59,14 @@
 
                             </div>
 
-
-                             <div class="buttons">
+                             <div class="buttons" style="padding-bottom: 6px">
                             {% if request.user == answer.user %}
                             <a href="{% url 'edit answer' question_id=answer.to_question.pk pk=answer.pk %}" class="edit-button">Edit</a>
                             <a href="{% url 'delete answer' question_id=answer.to_question.pk pk=answer.pk %}" class="delete-button">Delete</a>
                             {% endif %}
                                      </div>
 
-
                         {% endfor %}
-
-
 
                         <!-- End Comments Section -->
 
@@ -81,15 +77,16 @@
                                     <i class="far fa-smile"></i>
                                 </h3>
                             </div>
-                            <!-- Start Add Comments Form -->
+                            <!-- START ANSWER SECTION FORM -->
                             <form method="post" action="{% url 'answer' question_id=question.pk %}">
                                 {{ answerform }}
-                                {% csrf_token %}
                                 <div class="buttons">
                                 <button type="submit" class="edit-button">Submit</button>
+                                    {% csrf_token %}
+
                                 </div>
                             </form>
-                            <!-- End Add Comments Form -->
+                            <!-- END ANSWER SECTION FORM-->
 
                         </div>
 

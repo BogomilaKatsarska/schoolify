@@ -181,8 +181,6 @@ class AssignmentMusicEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateVie
             return True
         return False
 
-    #TODO: get_form_kwargs for pics
-
 
 class AssignmentEnglishEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = AssignmentEnglish

@@ -11,12 +11,9 @@
 
             <div class="car-header">
                 <h1>{{ assignmentmusic.assignment_name}}</h1>
-                <!-- car model -->
                 <p><span class="description">School Subject: {{ assignmentmusic.school_subject}}</span></p>
-                <!-- car year -->
-                <p><span class="description">Song: {{ assignmentmusic.song }}</span></p>
+                <p><span class="description">Song: {{ assignmentmusic.song.url }}</span></p>
                 <p><span class="description">Created by student: {{ assignmentmusic.created_by}}</span></p>
-
             </div>
 
             <div class="buttons">
@@ -25,6 +22,7 @@
                 <a href="{% url 'assignment music delete' pk=assignmentmusic.pk %}" class="delete-button">Delete</a>
                 {% endif %}
             </div>
+
         </div>
     </section>
 {% csrf_token %}

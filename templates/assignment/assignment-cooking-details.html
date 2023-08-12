@@ -8,21 +8,17 @@
     <section id="car-details">
         <h1>Assignment Details</h1>
         <div class="info-section">
-            <div class="car-header">
+            <div class="car-header" style="padding: 30px">
 
                 <h1>Assignment name: {{ assignmentcooking.assignment_name}}</h1>
-                <!-- car model -->
                 <p><span class="description">School Subject: {{ assignmentcooking.school_subject}}</span></p>
-                <!-- car year -->
                 <p><span class="description">Name of Recipe: {{ assignmentcooking.recipe_name }}</span></p>
-                <!-- car price -->
                 <p><span class="description">Ingredients: {{ assignmentcooking.ingredients }}</span></p>
-                <!-- car model -->
                 <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time}}</span></p>
                 <p><span class="description">Created by student: {{ assignmentcooking.created_by}}</span></p>
 
                 {% if assignmentcooking.dish_image %}
-                    <img class="car-img" src="{{ assignmentcooking.dish_image }}" alt='{{ assignmentcooking.assignment_name }}'/>
+                    <img class="car-img" src="{{ assignmentcooking.dish_image.url }}" alt='{{ assignmentcooking.assignment_name }}'/>
                     {% else %}
                 <p><span class="description">Dish image: Not uploaded</span></p>
                 {% endif %}

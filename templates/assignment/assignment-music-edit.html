@@ -7,12 +7,10 @@
 <div id="box">
 
     <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment music edit' pk=assignmentmusic.pk %} enctype="multipart/form-data"">
+        <form method="post" action="{% url 'assignment music edit' pk=assignmentmusic.pk %}" enctype="multipart/form-data">
             <div class="container">
-
                 <h1>Edit {{ assignmentmusic.assignment_name }} Assignment</h1>
-
-{{ form }}
+                {{ form }}
                 {% csrf_token %}
                 <input class="btn submit" type="submit" value="Edit Assignment">
             </div>

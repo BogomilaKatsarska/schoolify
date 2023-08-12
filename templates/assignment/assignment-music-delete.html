@@ -6,7 +6,6 @@
     <section id="delete-page" class="auth">
         <form method="post" action="{% url 'assignment music delete' pk=assignmentmusic.pk %}">
             <div class="container">
-
                 <h1>Are you sure you want to delete your assignment: "{{ assignmentmusic.assignment_name }}"?</h1>
                     {{ form }}
                     <input class="btn" type="submit" value="Confirm">

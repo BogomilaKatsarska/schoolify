@@ -29,7 +29,7 @@ class AnswerForm(forms.ModelForm):
         model = Answer
         fields = ('comment_text',)
         widgets = {
-            'answer_text': forms.Textarea(
+            'comment_text': forms.Textarea(
                 attrs={
                     'placeholder': 'Add your answer...',
                 }),
@@ -41,7 +41,6 @@ class AnswerEditForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         self.fields['user'].disabled = True
         self.fields['to_question'].disabled = True
-
 
     class Meta:
         model = Answer

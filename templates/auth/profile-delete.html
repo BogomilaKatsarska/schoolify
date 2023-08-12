@@ -13,7 +13,6 @@
     <section id="delete-page" class="auth">
         <form method="post" action="{% url 'profile delete' pk=user.pk %}">
             <div class="container">
-
                 <h1>Are you sure you want to delete your profile?</h1>
                     {{ form }}
                     <input type="submit" value="Confirm">
