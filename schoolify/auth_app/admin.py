@@ -1,8 +1,9 @@
 from django.contrib import admin
+from django.contrib.admin import ModelAdmin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin
 from schoolify.auth_app.forms import SignUpForm
-from schoolify.auth_app.models import AppUser
+from schoolify.auth_app.models import AppUser, Profile
 
 UserModel = get_user_model()
 
@@ -15,7 +16,6 @@ class AppUserAdmin(UserAdmin):
     list_filter = ('date_joined',)
     search_fields = ("personal_number", )
     add_form = SignUpForm
-    #TODO: check petstagram form =
     fieldsets = (
         ('Personal number', {'fields': ('personal_number', 'password')}),
         ('Permissions', {
@@ -40,3 +40,7 @@ class AppUserAdmin(UserAdmin):
         ),
     )
 
+
+@admin.register(Profile)
+class ProfileAdmin(ModelAdmin):
+    fieldsets = ()
