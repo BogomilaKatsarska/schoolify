@@ -10,21 +10,22 @@
 
 <div id="box">
 
-<header>
-<form method="get" action="{% url 'books list' %}">
-     <div style="width: 30%" class="container">
-        <input name="pattern" placeholder="Search a book by title.."/>
+<header style="padding: 0px">
 
-        <input class="btn" type="submit" value="Search">
-     </div>
-</form>
-
+<section id="create-page" class="auth">
+        <form method="get" action="{% url 'books list' %}">
+            <div class="container" style="margin-bottom: -30px; margin-top: -30px">
+                <input name="pattern" placeholder="Search a book by title.."/>
+                <input class="btn" type="submit" value="Search">
+            </div>
+        </form>
+</section>
 
 
 
         <h2 style="float:right">
         {% if perms.book.add_book %}
- <div class="buttons">
+ <div class="buttons" >
                 <a href="{% url 'book create' %}" class="edit-button">Add new book</a>
             </div>
         {% endif %}
@@ -39,7 +40,7 @@
             {% for b in object_list %}
 <div class="info-section">
 
-            <div class="car-header">
+            <div style="font-size: 23px" class="car-header">
             {% if b.cover_image %}
                     <div class="image-wrap">
                         <img style="float:right" width="150" height="250" src="{{ b.cover_image }}"
@@ -61,6 +62,8 @@
                     </div>
 
             </div>
+
+
      {% endfor %}
 
             {% else %}

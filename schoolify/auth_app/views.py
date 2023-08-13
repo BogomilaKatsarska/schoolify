@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
-from schoolify.auth_app.forms import SignUpForm, ProfileEditForm
+from schoolify.auth_app.forms import SignUpForm, ProfileEditForm, ProfileDeleteForm
 from schoolify.auth_app.models import Profile
 
 UserModel = get_user_model()
@@ -57,6 +57,7 @@ class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Profile
     template_name = "auth/profile-delete.html"
+    form_class = ProfileDeleteForm
     success_url = reverse_lazy('index')
 
     def test_func(self):

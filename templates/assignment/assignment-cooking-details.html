@@ -17,8 +17,8 @@
                 <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time}}</span></p>
                 <p><span class="description">Created by student: {{ assignmentcooking.created_by}}</span></p>
 
-                {% if assignmentcooking.dish_image %}
-                    <img class="car-img" src="{{ assignmentcooking.dish_image.url }}" alt='{{ assignmentcooking.assignment_name }}'/>
+                {% if assignmentcooking.dish_image.url %}
+                    <img style="float: right; margin-top: -270px" class="car-img" src="{{ assignmentcooking.dish_image.url }}" alt='{{ assignmentcooking.assignment_name }}'/>
                     {% else %}
                 <p><span class="description">Dish image: Not uploaded</span></p>
                 {% endif %}

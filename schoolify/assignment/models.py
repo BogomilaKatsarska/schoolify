@@ -47,6 +47,9 @@ class AssignmentBaseModel(CreatedAndUpdatedInfoMixIn):
 
 
 class AssignmentEnglish(AssignmentBaseModel):
+    class Meta:
+        verbose_name_plural = 'Assignment english'
+
     essay = models.TextField(
         help_text='Please write your essay here.',
         null=False,
@@ -60,7 +63,11 @@ class AssignmentEnglish(AssignmentBaseModel):
 
 
 class AssignmentMathematics(AssignmentBaseModel):
+    class Meta:
+        verbose_name_plural = 'Assignment mathematics'
+
     MAX_ASSIGNMENT_MATHEMATICS_LEN = 1000
+
     solution = models.TextField(
         max_length=MAX_ASSIGNMENT_MATHEMATICS_LEN,
         help_text='Please write the solution here',
@@ -77,6 +84,9 @@ class AssignmentMusic(AssignmentBaseModel):
 
 
 class AssignmentCooking(AssignmentBaseModel):
+    class Meta:
+        verbose_name_plural = 'Assignment cooking'
+
     recipe_name = models.TextField(
         help_text='Please enter the name of your recipe.',
         null=False,

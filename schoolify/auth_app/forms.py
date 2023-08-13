@@ -6,6 +6,7 @@ from schoolify.auth_app.validators import validate_capitalized, validate_school_
 
 UserModel = get_user_model()
 
+
 class SignUpForm(UserCreationForm):
     MAX_FIRST_NAME = 15
     MAX_LAST_NAME = 15
@@ -51,6 +52,18 @@ class ProfileEditForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['user'].disabled = True
+
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
+class ProfileDeleteForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        Profile.objects.filter(user_id=self.instance.id).delete()
 
     class Meta:
         model = Profile

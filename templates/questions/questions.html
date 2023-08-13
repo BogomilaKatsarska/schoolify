@@ -30,7 +30,7 @@
                 <h3>Creation Date: {{ question.created_on}} </h3>
 
             </div>
-<div class="buttons">
+<div class="buttons" style="padding-bottom: 0px">
                 {% if request.user == question.student  %}
                 <a href="{% url 'question edit' pk=question.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'question delete' pk=question.pk %}" class="delete-button">Delete</a>

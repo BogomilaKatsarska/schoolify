@@ -8,7 +8,7 @@
 
     <section id="create-page" class="auth">
         <form method="post" action="{% url 'assignment cooking create' %}" enctype="multipart/form-data">
-            <div class="container">
+            <div style="color: #551A8B" class="container">
                 {{ form }}
                 {% csrf_token %}
                 <input class="btn" type="submit" value="Submit assignment">

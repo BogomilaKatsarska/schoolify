@@ -4,6 +4,7 @@ from schoolify.book.views import BooksListView, book_a_book_functionality, BookC
 
 urlpatterns = (
     path('list/', BooksListView.as_view(), name='books list'),
+    path('list-2/', BooksListView.as_view(), name='books list 2'),
     path('book-create/', BookCreateView.as_view(), name='book create'),
     path('book-enquiry/<int:book_id>', book_a_book_functionality, name="book enquiry"),
 )
