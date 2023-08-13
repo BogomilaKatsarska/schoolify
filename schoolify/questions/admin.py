@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from schoolify.questions.models import Question, Answer
 
 

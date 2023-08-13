@@ -1,5 +1,4 @@
 from django import forms
-
 from schoolify.assignment.models import AssignmentCooking, AssignmentEnglish, AssignmentMathematics, AssignmentMusic
 
 
@@ -35,7 +34,6 @@ class AssignmentCookingEditForm(AssignmentCookingBaseForm):
         super().__init__(*args, **kwargs)
         self.fields['school_subject'].disabled = True
         self.fields['created_by'].disabled = True
-
 
 
 class AssignmentMathematicsBaseForm(forms.ModelForm):

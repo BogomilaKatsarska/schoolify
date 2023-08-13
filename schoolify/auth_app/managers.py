@@ -6,9 +6,6 @@ class AppUserManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, personal_number, password, **extra_fields):
-        """
-        Create and save a user with the given username, email, and password.
-        """
         if not personal_number:
             raise ValueError('Personal number must be set')
         user = self.model(personal_number=personal_number, **extra_fields)

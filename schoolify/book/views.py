@@ -26,6 +26,14 @@ class BooksListView(LoginRequiredMixin, ListView):
         return self.request.GET.get('pattern', None)
 
 
+class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+    permission_required = 'book.add_book'
+    template_name = 'book/books-create.html'
+    model = Book
+    fields = '__all__'
+    success_url = reverse_lazy('books list')
+
+
 @login_required
 def book_a_book_functionality(request, book_id):
     book = Book.objects.get(pk=book_id)
@@ -38,12 +46,3 @@ def book_a_book_functionality(request, book_id):
     book.save()
 
     return redirect('books list')
-
-
-class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
-    permission_required = 'book.add_book'
-    template_name = 'book/books-create.html'
-    model = Book
-    fields = '__all__'
-    success_url = reverse_lazy('books list')
-

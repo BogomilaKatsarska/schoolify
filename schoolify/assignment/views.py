@@ -18,19 +18,6 @@ class AssignmentCookingCreateView(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
-    def get_form_kwargs(self, **kwargs):
-        kwargs = {
-            'initial': self.get_initial(),
-            'prefix': self.get_prefix(),
-        }
-
-        if self.request.method in ('POST', 'PUT'):
-            kwargs.update({
-                'data': self.request.POST,
-                'files': self.request.FILES,
-            })
-        return kwargs
-
 
 class AssignmentMathematicsCreateView(LoginRequiredMixin, CreateView):
     template_name = 'assignment/assignment-mathematics-create.html'
@@ -68,8 +55,6 @@ class AssignmentMusicCreateView(LoginRequiredMixin, CreateView):
         form.instance.created_by = self.request.user
 
         return super().form_valid(form)
-
-
 
 
 class AssignmentMusicListView(LoginRequiredMixin, ListView):
