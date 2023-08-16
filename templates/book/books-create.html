@@ -3,20 +3,21 @@
 
 {% block page_content %}
 
-<body>
-<div id="box">
+    <body>
+    <div id="box">
 
-    <header>
-    <section id="create-page" class="auth">
-        <form method="post" action="{% url 'book create' %}">
-            <div class="container">
-                {{ form }}
-                {% csrf_token %}
-                <input class="btn" type="submit" value="Add new book">
-            </div>
-        </form>
-    </section>
-</div>
-</body>
+        <header>
+            <section id="create-page" class="auth">
+                <form method="post" action="{% url 'book create' %}">
+                    <div class="container">
+                        {{ form }}
+                        {% csrf_token %}
+                        <input class="btn" type="submit" value="Add new book">
+                    </div>
+                </form>
+            </section>
+        </header>
+    </div>
+    </body>
 {% endblock %}
 

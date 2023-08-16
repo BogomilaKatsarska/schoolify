@@ -16,45 +16,66 @@
 <main>
 
 
-        <nav class="animenu">
+    <nav class="animenu">
 
-        	<button class="animenu__toggle">
-                <span class="animenu__toggle__bar"></span>
-                <span class="animenu__toggle__bar"></span>
-                <span class="animenu__toggle__bar"></span>
-            </button>
+        <button class="animenu__toggle">
+            <span class="animenu__toggle__bar"></span>
+            <span class="animenu__toggle__bar"></span>
+            <span class="animenu__toggle__bar"></span>
+        </button>
 
-        	<ul class="animenu__nav">
+        <ul class="animenu__nav">
 
-                {% if request.user.is_authenticated%}
+            {% if request.user.is_authenticated %}
+                <li>
+                    <a href="#">Assignments</a>
+                    <ul class="animenu__nav__child">
+                        <li><a href="{% url 'assignment music list' %}">Music All Submitted</a></li>
+                        <li><a href="{% url 'assignment english list' %}">English All Submitted</a></li>
+                        <li><a href="{% url 'assignment mathematics list' %}">Mathematics All Submitted</a></li>
+                        <li><a href="{% url 'assignment cooking list' %}">Cooking All Submitted</a></li>
+                        <li><a href='#' style="padding: 1px"> </a></li>
+                        <li><a href="{% url 'assignment music create' %}">Music Submit</a></li>
+                        <li><a href="{% url 'assignment english create' %}">English Submit</a></li>
+                        <li><a href="{% url 'assignment mathematics create' %}">Mathematics Submit</a></li>
+                        <li><a href="{% url 'assignment cooking create' %}">Cooking Submit</a></li>
+                    </ul>
+                </li>
+
+                <a href="{% url 'questions all' %}">Q&A</a>
+
+
+                {% if perms.book.add_book %}
                     <li>
-                        <a href="#">Assignments</a>
+                        <a href="#">Books</a>
                         <ul class="animenu__nav__child">
-                            <li><a href="{% url 'assignment music list' %}">Music All Submitted</a></li>
-                            <li><a href="{% url 'assignment english list' %}">English All Submitted</a></li>
-                            <li><a href="{% url 'assignment mathematics list' %}">Mathematics All Submitted</a></li>
-                            <li><a href="{% url 'assignment cooking list' %}">Cooking All Submitted</a></li>
-                            <li><a href='#' style="padding: 1px"> </a></li>
-                            <li><a href="{% url 'assignment music create' %}">Music Submit</a></li>
-                            <li><a href="{% url 'assignment english create' %}">English Submit</a></li>
-                            <li><a href="{% url 'assignment mathematics create' %}">Mathematics Submit</a></li>
-                            <li><a href="{% url 'assignment cooking create' %}">Cooking Submit</a></li>
-                      </ul>
+                            <li><a href="{% url 'books list' %}">All Books</a></li>
+                            <li><a href="{% url 'book create' %}">Add book</a></li>
+                        </ul>
                     </li>
-
-                    <a href="{%  url 'questions all' %}">Q&A</a>
-                    <a href="{% url 'books list' %}">Books</a>
-                    <a href="{% url 'sign out' %}">Sign Out</a>
-                    <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
                 {% else %}
-                     <a href="{%  url 'sign in' %}">Sign In</a>
-                     <a href="{% url 'sign up' %}">Sign Up</a>
+                    <li><a href="{% url 'books list' %}">Books</a></li>
                 {% endif %}
 
 
-            </ul>
-        </nav>
+                <a href="{% url 'sign out' %}">Sign Out</a>
+                <a href="{% url 'profile details' pk=user.pk %}">Profile</a>
+            {% else %}
+                <a href="{% url 'sign in' %}">Sign In</a>
+                <a href="{% url 'sign up' %}">Sign Up</a>
+            {% endif %}
 
+
+        </ul>
+    </nav>
+{#<p>#}
+{#Path is: {{ request.path }}#}
+{#</p>#}
+{% if request.path == '/' %}
+        <div class="music-img">
+        <img style=" width: 1903px; height: 773px;" src="{% static 'images/graduation-hat.jpg' %}" alt="music-icon">
+    </div>
+{% endif %}
 
     {% block page_content %}
     {% endblock %}
@@ -62,5 +83,5 @@
 
 {% include 'common/footer.html' %}
 
-
+</body>
 </html>

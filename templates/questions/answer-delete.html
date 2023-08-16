@@ -6,7 +6,6 @@
     <section id="delete-page" class="auth">
         <form method="post" action="{% url 'delete answer' pk=answer.pk question_id=answer.to_question.pk  %}">
             <div class="container">
-
                 <h1>Are you sure you want to delete your answer"{{ answer.comment_text }}"?</h1>
                     {{ form }}
                     <input type="submit" value="Confirm">

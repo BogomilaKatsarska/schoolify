@@ -9,10 +9,8 @@
     <section id="create-page" class="auth">
         <form method="post" action="{% url 'edit answer' pk=answer.pk question_id=answer.to_question.pk %}">
             <div class="container">
-
                 <h1>Edit </h1>
-
-{{ form }}
+                {{ form }}
                 {% csrf_token %}
                 <input class="btn submit" type="submit" value="Edit Assignment">
             </div>

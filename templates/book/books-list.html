@@ -3,74 +3,62 @@
 
 {% block page_content %}
 
-<section>
+    <section>
 
 
-<body>
+        <body>
 
-<div id="box">
+        <div id="box">
 
-<header style="padding: 0px">
-
-<section id="create-page" class="auth">
-        <form method="get" action="{% url 'books list' %}">
-            <div class="container" style="margin-bottom: -30px; margin-top: -30px">
-                <input name="pattern" placeholder="Search a book by title.."/>
-                <input class="btn" type="submit" value="Search">
-            </div>
-        </form>
-</section>
-
-
-
-        <h2 style="float:right">
-        {% if perms.book.add_book %}
- <div class="buttons" >
-                <a href="{% url 'book create' %}" class="edit-button">Add new book</a>
-            </div>
-        {% endif %}
-
-            </h2>
-    </header>
+            <header style="padding: 0px">
+                <section id="create-page" class="auth">
+                    <form method="get" action="{% url 'books list' %}">
+                        <div class="container" style="margin-bottom: -30px; margin-top: -30px">
+                            <input name="pattern" placeholder="Search a book by title.."/>
+                            <input class="btn" type="submit" value="Search">
+                        </div>
+                    </form>
+                </section>
+            </header>
 
 
- {% if object_list %}
+            {% if object_list %}
 
 
-            {% for b in object_list %}
-<div class="info-section">
+                {% for b in object_list %}
+                    <div class="info-section">
 
-            <div style="font-size: 23px" class="car-header">
-            {% if b.cover_image %}
-                    <div class="image-wrap">
-                        <img style="float:right" width="150" height="250" src="{{ b.cover_image }}"
-                             alt=" image of {{ b.name }}">
-                    </div>
-                {% endif %}
-                <h1>Name: {{ b.name }}</h1>
-                <h1>Author: {{ b.author }}</h1>
-                <h1>Description: {{ b.description}} </h1>
-                <h1>School subject: {{ b.school_subject }}</h1>
-                <h1>Number of pages: {{ b.number_of_pages }}</h1>
-                <h1>Available from: {{ b.available_from }}</h1>
-            {% if b.last_booked_by != None %}
-                <h1>Last booked by: {{ b.last_booked_by }}</h1>
-            {% endif %}
+                    <div style="font-size: 23px" class="car-header">
+                        {% if b.cover_image %}
+                            <div class="image-wrap">
+                                <img style="float:right" width="150" height="250" src="{{ b.cover_image }}"
+                                     alt=" image of {{ b.name }}">
+                            </div>
+                        {% endif %}
+                        <h1>Name: {{ b.name }}</h1>
+                        <h1>Author: {{ b.author }}</h1>
+                        <h1>Description: {{ b.description }} </h1>
+                        <h1>School subject: {{ b.school_subject }}</h1>
+                        <h1>Number of pages: {{ b.number_of_pages }}</h1>
+                        <h1>Available from: {{ b.available_from }}</h1>
+                        {% if b.last_booked_by != None %}
+                            <h1>Last booked by: {{ b.last_booked_by }}</h1>
+                        {% endif %}
 
-                    <div class="buttons">
-                                <a href="{% url 'book enquiry' b.pk %}" class="edit-button">BOOK THIS BOOK FOR 5 DAYS</a>
+                        <div class="buttons">
+                            <a href="{% url 'book enquiry' b.pk %}" class="edit-button">BOOK THIS BOOK FOR 5 DAYS</a>
+                        </div>
+
                     </div>
 
-            </div>
 
-
-     {% endfor %}
+                {% endfor %}
 
             {% else %}
-        <p class="no-articles">No books available</p>
+                <p class="no-articles">No books available</p>
             {% endif %}
 
-        </section>
-{% csrf_token %}
+    </section>
+    {% csrf_token %}
 
 {% endblock %}
