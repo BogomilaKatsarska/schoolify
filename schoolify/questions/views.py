@@ -20,7 +20,6 @@ class QuestionCreateView(LoginRequiredMixin, CreateView):
 class QuestionListView(LoginRequiredMixin, ListView):
     template_name = 'questions/questions.html'
     model = Question
-    paginate_by = 4
     extra_context = {
         'question_form': QuestionForm(),
         'answerform': AnswerForm(),

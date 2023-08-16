@@ -11,7 +11,6 @@ from schoolify.book.models import Book
 class BooksListView(LoginRequiredMixin, ListView):
     model = Book
     template_name = 'book/books-list.html'
-    paginate_by = 3
 
     def get_queryset(self):
         queryset = super().get_queryset()

@@ -60,6 +60,10 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user} - {self.first_name} {self.last_name}'
 
+    def delete(self, *args, **kwargs):
+        self.user.delete()
+        return super(self.__class__, self).delete(*args, **kwargs)
+
     @property
     def full_name(self):
         if self.first_name or self.last_name:
