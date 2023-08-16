@@ -111,7 +111,7 @@
 }
 
 .delete-button{
-    background: red;
+    background: gray;
 }
 
 .edit-button:hover, .delete-button:hover {
