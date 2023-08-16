@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from schoolify.auth_app.validators import image_size_validator_10mb
+
+from schoolify.assignment.validators import image_size_validator_10mb
 from schoolify.utils.mixins import CreatedAndUpdatedInfoMixIn
 
 UserModel = get_user_model()
@@ -94,7 +95,9 @@ class AssignmentCooking(AssignmentBaseModel):
     )
     dish_image = models.ImageField(
         upload_to='dishes',
-        validators=(image_size_validator_10mb,),
+        validators=(
+            image_size_validator_10mb,
+        ),
         help_text='Please upload a picture of your dish.',
         null=True,
         blank=True,
