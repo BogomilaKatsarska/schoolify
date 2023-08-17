@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block page_content %}
-
-<section id="create-page" class="auth">
+    {#Creaate a question#}
+    <section id="create-page" class="auth">
         <form method="post" action="{% url 'question create' %}">
             <div class="container">
                 {{ question_form }}
@@ -11,119 +11,89 @@
                 <input class="btn" type="submit" value="Submit Question">
             </div>
         </form>
-</section>
+    </section>
 
-
- {% if object_list %}
+    {#List of questions#}
+    {% if object_list %}
 
         <section id="catalogue">
 
-     {% for question in object_list %}
+        {% for question in object_list %}
 
             <div class="info-section">
 
             <div class="car-header">
                 <h1>Question: {{ question.question }}</h1>
-                <h3>School Subject: {{ question.related_school_subject}}</h3>
+                <h3>School Subject: {{ question.related_school_subject }}</h3>
                 <h3>Student: {{ question.student }}</h3>
-                <h3>Creation Date: {{ question.created_on}} </h3>
+                <h3>Creation Date: {{ question.created_on }} </h3>
 
             </div>
-<div class="buttons" style="padding-bottom: 0px">
-                {% if request.user == question.student  %}
-                <a href="{% url 'question edit' pk=question.pk %}" class="edit-button">Edit</a>
-                <a href="{% url 'question delete' pk=question.pk %}" class="delete-button">Delete</a>
+            <div class="buttons" style="padding-bottom: 0px">
+                {% if request.user == question.student %}
+                    <a href="{% url 'question edit' pk=question.pk %}" class="edit-button">Edit</a>
+                    <a href="{% url 'question delete' pk=question.pk %}" class="delete-button">Delete</a>
                 {% endif %}
             </div>
 
-          <!-- Start Comments Section -->
-                        {% for answer in question.answer_set.all %}
-                            <div class="comments">
-                                <div class="top">
-                                    <div class="userDetails">
-                                        <div class="comment-data">
+            {#Answers#}
+            {% for answer in question.answer_set.all %}
+                <div class="comments">
+                    <div class="top">
+                        <div class="userDetails">
+                            <div class="comment-data">
 
-                                            <p>
-                                                Answer:{{ answer.comment_text }}
-                                            </p>
-                                              <p>
-                                                Replied by student with ID:{{ answer.user.personal_number }}
-                                            </p>
-                                        </div>
-                                        <span>{{ answer.created_on }}</span>
-
-
-                                    </div>
-                                </div>
-
+                                <p>
+                                    Answer:{{ answer.comment_text }}
+                                </p>
+                                <p>
+                                    Replied by student with ID:{{ answer.user.personal_number }}
+                                </p>
                             </div>
+                            <span>{{ answer.created_on }}</span>
 
-                             <div class="buttons" style="padding-bottom: 6px">
-                            {% if request.user == answer.user %}
-                            <a href="{% url 'edit answer' question_id=answer.to_question.pk pk=answer.pk %}" class="edit-button">Edit</a>
-                            <a href="{% url 'delete answer' question_id=answer.to_question.pk pk=answer.pk %}" class="delete-button">Delete</a>
-                            {% endif %}
-                                     </div>
-
-                        {% endfor %}
-
-                        <!-- End Comments Section -->
-
-                        <!-- Start Add Comments Section -->
-                        <div class="addComments" >
-                            <div class="reaction">
-                                <h3>
-                                    <i class="far fa-smile"></i>
-                                </h3>
-                            </div>
-                            <!-- START ANSWER SECTION FORM -->
-                            <form method="post" action="{% url 'answer' question_id=question.pk %}">
-                                {{ answerform }}
-                                <div class="buttons">
-                                <button type="submit" class="edit-button">Submit</button>
-                                    {% csrf_token %}
-
-                                </div>
-                            </form>
-                            <!-- END ANSWER SECTION FORM-->
 
                         </div>
+                    </div>
 
+                </div>
 
+                <div class="buttons" style="padding-bottom: 6px">
+                    {% if request.user == answer.user %}
+                        <a href="{% url 'edit answer' question_id=answer.to_question.pk pk=answer.pk %}"
+                           class="edit-button">Edit</a>
+                        <a href="{% url 'delete answer' question_id=answer.to_question.pk pk=answer.pk %}"
+                           class="delete-button">Delete</a>
+                    {% endif %}
+                </div>
 
-     {% endfor %}
+            {% endfor %}
 
-            {% else %}
+            {#Add answer#}
+            <div class="addComments">
+                <div class="reaction">
+                    <h3>
+                        <i class="far fa-smile"></i>
+                    </h3>
+                </div>
+                <form method="post" action="{% url 'answer' question_id=question.pk %}">
+                    {{ answerform }}
+                    <div class="buttons">
+                        <button type="submit" class="edit-button">Submit</button>
+                        {% csrf_token %}
+
+                    </div>
+                </form>
+            </div>
+
+        {% endfor %}
+
+    {% else %}
         <p class="no-articles">No questions available</p>
-            {% endif %}
+    {% endif %}
 
-        </section>
+</section>
 
-
-{% if object_list %}
-
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% else %}
-            <a disabled="disabled">&laquo; first</a>
-            <a disabled="disabled">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
-{% endif %}
-
-{% csrf_token %}
+    {% csrf_token %}
 
 {% endblock %}

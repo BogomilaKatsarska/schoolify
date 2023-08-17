@@ -9,7 +9,7 @@
         <body>
 
         <div id="box">
-
+            {#Search field#}
             <header style="padding: 0px">
                 <section id="create-page" class="auth">
                     <form method="get" action="{% url 'books list' %}">
@@ -20,7 +20,7 @@
                     </form>
                 </section>
             </header>
-
+            {#List of books#}
 
             {% if object_list %}
 
@@ -37,9 +37,13 @@
                         {% endif %}
                         <h1>Name: {{ b.name }}</h1>
                         <h1>Author: {{ b.author }}</h1>
-                        <h1>Description: {{ b.description }} </h1>
+                        {% if b.description %}
+                            <h1>Description: {{ b.description }} </h1>
+                        {% endif %}
                         <h1>School subject: {{ b.school_subject }}</h1>
-                        <h1>Number of pages: {{ b.number_of_pages }}</h1>
+                        {% if b.number_of_pages %}
+                            <h1>Number of pages: {{ b.number_of_pages }}</h1>
+                        {% endif %}
                         <h1>Available from: {{ b.available_from }}</h1>
                         {% if b.last_booked_by != None %}
                             <h1>Last booked by: {{ b.last_booked_by }}</h1>

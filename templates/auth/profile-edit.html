@@ -2,20 +2,20 @@
 {% load static %}
 
 {% block page_content %}
-<body>
-<div id="box">
+    <body>
+    <div id="box">
 
-    <section id="create-page" class="auth">
-        <form method="post" action="{% url 'profile edit' pk=user.pk %}">
-            <div class="container">
-                <h1>Edit Profile</h1>
+        <section id="create-page" class="auth">
+            <form method="post" action="{% url 'profile edit' pk=user.pk %}">
+                <div class="container">
+                    <h1>Edit Profile</h1>
                     {{ form }}
-                {% csrf_token %}
-                <input class="btn submit" type="submit" value="Profile Edit">
-            </div>
-        </form>
-    </section>
-</div>
-</body>
+                    {% csrf_token %}
+                    <input class="btn submit" type="submit" value="Profile Edit">
+                </div>
+            </form>
+        </section>
+    </div>
+    </body>
 
 {% endblock %}

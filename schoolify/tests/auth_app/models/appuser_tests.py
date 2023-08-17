@@ -27,7 +27,6 @@ class AppUserModelTests(TestCase):
             appuser.save()
         self.assertIsNotNone(context.exception)
 
-
     def test_appuser_save__when_personal_number_contains_letters_and_digits__expect_exception(self):
         appuser = AppUser(
             personal_number='123456t900',

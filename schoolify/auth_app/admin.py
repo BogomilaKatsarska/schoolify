@@ -11,7 +11,7 @@ UserModel = get_user_model()
 @admin.register(UserModel)
 class AppUserAdmin(UserAdmin):
     ordering = ('personal_number',)
-    list_display = [AppUser.USERNAME_FIELD, 'date_joined', 'last_login']
+    list_display = [AppUser.USERNAME_FIELD, 'date_joined']
     readonly_fields = ["date_joined", "last_login"]
     list_filter = ('date_joined',)
     search_fields = ("personal_number", )

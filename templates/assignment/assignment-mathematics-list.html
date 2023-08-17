@@ -2,34 +2,35 @@
 {% load static %}
 
 {% block page_content %}
-<body>
+    <body>
 
 
-{% if object_list %}
+    {% if object_list %}
 
         <section id="catalogue">
         <h1 style="color:white;">List of Assignments</h1>
 
-            {% for assignment in assignmentmathematics_list %}
+        {% for assignment in assignmentmathematics_list %}
 
             <div class="info-section">
 
             <div class="car-header">
 
-                <h1>{{ assignment.assignment_name}} </h1>
-<div class="buttons">
-                <a href="{% url 'assignment mathematics details' pk=assignment.pk %}" class="delete-button">Details</a>
+                <h1>{{ assignment.assignment_name }} </h1>
+                <div class="buttons">
+                    <a href="{% url 'assignment mathematics details' pk=assignment.pk %}"
+                       class="delete-button">Details</a>
+                </div>
             </div>
-            </div>
-     {% endfor %}
-
-            {% else %}
+        {% endfor %}
+    </div>
+    {% else %}
         <p class="no-articles">No assignments available</p>
-            {% endif %}
+    {% endif %}
 
-        </section>
-{% if assignmentmathematics_list %}
-<div class="pagination">
+    </section>
+    {% if assignmentmathematics_list %}
+        <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -48,7 +49,7 @@
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
         {% endif %}
     </span>
-</div>
-{% endif %}
-</body>
+        </div>
+    {% endif %}
+    </body>
 {% endblock %}

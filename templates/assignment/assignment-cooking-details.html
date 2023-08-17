@@ -3,37 +3,40 @@
 
 {% block page_content %}
 
-<body>
-<div id="box">
-    <section id="car-details">
-        <h1>Assignment Details</h1>
-        <div class="info-section">
-            <div class="car-header" style="padding: 30px">
+    <body>
+    <div id="box">
+        <section id="car-details">
+            <h1>Assignment Details</h1>
+            <div class="info-section">
+                <div class="car-header" style="padding: 30px">
 
-                <h1>Assignment name: {{ assignmentcooking.assignment_name}}</h1>
-                <p><span class="description">School Subject: {{ assignmentcooking.school_subject}}</span></p>
-                <p><span class="description">Name of Recipe: {{ assignmentcooking.recipe_name }}</span></p>
-                <p><span class="description">Ingredients: {{ assignmentcooking.ingredients }}</span></p>
-                <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time}}</span></p>
-                <p><span class="description">Created by student: {{ assignmentcooking.created_by}}</span></p>
+                    <h1>Assignment name: {{ assignmentcooking.assignment_name }}</h1>
+                    <p><span class="description">School Subject: {{ assignmentcooking.school_subject }}</span></p>
+                    <p><span class="description">Name of Recipe: {{ assignmentcooking.recipe_name }}</span></p>
+                    <p><span class="description">Ingredients: {{ assignmentcooking.ingredients }}</span></p>
+                    <p><span class="description">Preparation time: {{ assignmentcooking.preparation_time }}</span></p>
+                    <p><span class="description">Created by student: {{ assignmentcooking.created_by }}</span></p>
 
-                {% if assignmentcooking.dish_image.url %}
-                    <img style="float: right; margin-top: -270px" class="car-img" src="{{ assignmentcooking.dish_image.url }}" alt='{{ assignmentcooking.assignment_name }}'/>
+                    {% if assignmentcooking.dish_image.url %}
+                        <img style="float: right; margin-top: -270px" class="car-img"
+                             src="{{ assignmentcooking.dish_image.url }}"
+                             alt='{{ assignmentcooking.assignment_name }}'/>
                     {% else %}
-                <p><span class="description">Dish image: Not uploaded</span></p>
-                {% endif %}
-            </div>
+                        <p><span class="description">Dish image: Not uploaded</span></p>
+                    {% endif %}
+                </div>
 
 
-            <div class="buttons">
-                {% if request.user == assignmentcooking.created_by  %}
-                <a href="{% url 'assignment cooking edit' pk=assignmentcooking.pk %}" class="edit-button">Edit</a>
-                <a href="{% url 'assignment cooking delete' pk=assignmentcooking.pk %}" class="delete-button">Delete</a>
-                {% endif %}
+                <div class="buttons">
+                    {% if request.user == assignmentcooking.created_by %}
+                        <a href="{% url 'assignment cooking edit' pk=assignmentcooking.pk %}"
+                           class="edit-button">Edit</a>
+                        <a href="{% url 'assignment cooking delete' pk=assignmentcooking.pk %}" class="delete-button">Delete</a>
+                    {% endif %}
+                </div>
             </div>
-        </div>
-    </section>
-{% csrf_token %}
-</div>
-</body>
+        </section>
+        {% csrf_token %}
+    </div>
+    </body>
 {% endblock %}

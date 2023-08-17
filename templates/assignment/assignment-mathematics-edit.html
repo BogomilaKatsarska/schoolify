@@ -3,19 +3,19 @@
 
 {% block page_content %}
 
-<body>
-<div id="box">
+    <body>
+    <div id="box">
 
-    <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment mathematics edit' pk=assignmentmathematics.pk %}">
-            <div style="color: #551A8B" class="container">
-                <h1>Edit {{ assignmentmathematics.assignment_name }} Assignment</h1>
-                {{ form }}
-                {% csrf_token %}
-                <input class="btn submit" type="submit" value="Edit Assignment">
-            </div>
-        </form>
-    </section>
-</div>
-</body>
+        <section id="create-page" class="auth">
+            <form method="post" action="{% url 'assignment mathematics edit' pk=assignmentmathematics.pk %}">
+                <div style="color: #551A8B" class="container">
+                    <h1>Edit {{ assignmentmathematics.assignment_name }} Assignment</h1>
+                    {{ form }}
+                    {% csrf_token %}
+                    <input class="btn submit" type="submit" value="Edit Assignment">
+                </div>
+            </form>
+        </section>
+    </div>
+    </body>
 {% endblock %}

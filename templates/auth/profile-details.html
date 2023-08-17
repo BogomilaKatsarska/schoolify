@@ -2,34 +2,36 @@
 {% load static %}
 
 {% block page_content %}
-<body>
-<div id="box">
-    <section id="car-details">
-        <h1>Profile Details</h1>
-        <div class="info-section">
-            <div class="car-header" style="padding: 30px">
-                {% if profile.profile_picture %}
-                    <img class="car-img" src="{{ profile.profile_picture }}" alt='{{ profile.first_name }}'/>
+    <body>
+    <div id="box">
+        <section id="car-details">
+            <h1>Profile Details</h1>
+            <div class="info-section">
+                <div class="car-header" style="padding: 30px">
+                    {% if profile.profile_picture %}
+                        <img class="car-img" src="{{ profile.profile_picture }}" alt='{{ profile.first_name }}'/>
                     {% else %}
-                <p><span class="description">Profile Picture: None</span></p>
-                {% endif %}
-                <p><span class="description">First Name: {{ profile.first_name }}</span></p
-                <p><span class="description">Last Name: {{ profile.last_name}}</span></p>
-                <p><span class="description">School Grade: {{ profile.school_grade }}</span></p>
-                <p><span class="description">Personal Number: {{ profile.user.personal_number}}</span></p>
+                        <p><span class="description">Profile Picture: Not uploaded</span></p>
+                    {% endif %}
+                    <p><span class="description">First Name: {{ profile.first_name }}</span></p>
+                    <p><span class="description">Last Name: {{ profile.last_name }}</span></p>
+                    {% if profile.school_grade %}
+                        <p><span class="description">School Grade: {{ profile.school_grade }}</span></p>
+                    {% endif %}
+                    <p><span class="description">Personal Number: {{ profile.user.personal_number }}</span></p>
 
-            </div>
+                </div>
             </div>
 
             <div style="padding-top: 27px" class="buttons">
                 <a href="{% url 'profile edit' pk=profile.pk %}" class="edit-button">Edit</a>
                 <a href="{% url 'profile delete' pk=profile.pk %}" class="delete-button">Delete</a>
             </div>
-        </div>
-    </section>
-{% csrf_token %}
-</body>
-</html>
+
+        </section>
+    </div>
+    {% csrf_token %}
+    </body>
 
 
 {% endblock %}

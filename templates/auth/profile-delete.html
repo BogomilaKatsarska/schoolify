@@ -6,22 +6,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>Delete Profile</title>
 </head>
 
-    <section id="delete-page" class="auth">
-        <form method="post" action="{% url 'profile delete' pk=user.pk %}">
-            <div class="container">
-                <h1>Are you sure you want to delete your profile?</h1>
-                    {{ form }}
-                <div class="buttons">
-                     <button type="submit" class="delete-button">Delete</button>
-                     {% csrf_token %}
-                </div>
+<section id="delete-page" class="auth">
+    <form method="post" action="{% url 'profile delete' pk=user.pk %}">
+        <div class="container">
+            <h1>Are you sure you want to delete your profile?</h1>
+            {{ form }}
+            <div class="buttons">
+                <button type="submit" class="delete-button">Delete</button>
+                {% csrf_token %}
             </div>
-        </form>
-    </section>
+        </div>
+    </form>
+</section>
 
 
 </html>

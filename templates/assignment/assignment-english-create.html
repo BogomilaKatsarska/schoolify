@@ -3,22 +3,21 @@
 
 {% block page_content %}
 
-<body>
-<div id="box">
+    <body>
+    <div id="box">
+        <header>
 
-    <header>
-       
-
-    <section id="create-page" class="auth">
-        <form method="post" action="{% url 'assignment english create' %}">
-            <div style="color: #551A8B" class="container">
-                {{ form }}
-                {% csrf_token %}
-                <input class="btn" type="submit" value="Submit assignment">
-            </div>
-        </form>
-    </section>
-</div>
-</body>
+            <section id="create-page" class="auth">
+                <form method="post" action="{% url 'assignment english create' %}">
+                    <div style="color: #551A8B" class="container">
+                        {{ form }}
+                        {% csrf_token %}
+                        <input class="btn" type="submit" value="Submit assignment">
+                    </div>
+                </form>
+            </section>
+        </header>
+    </div>
+    </body>
 {% endblock %}
 

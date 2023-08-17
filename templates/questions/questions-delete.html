@@ -7,10 +7,10 @@
         <form method="post" action="{% url 'question delete' pk=question.pk %}">
             <div class="container">
                 <h1>Are you sure you want to delete your question: "{{ question.question }}"?</h1>
-                    {{ form }}
-                 <div class="buttons">
-                     <button type="submit" class="delete-button">Delete</button>
-                     {% csrf_token %}
+                {{ form }}
+                <div class="buttons">
+                    <button type="submit" class="delete-button">Delete</button>
+                    {% csrf_token %}
                 </div>
             </div>
         </form>

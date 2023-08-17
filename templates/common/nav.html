@@ -1,9 +1,9 @@
 <header>
 
-        <h1><a class="index-navigation" href="{% url 'index' %}"><span>S</span>CHOOLIFY <span>W</span>ELCOME</a></h1>
+    <h1><a class="index-navigation" href="{% url 'index' %}"><span>S</span>CHOOLIFY <span>W</span>ELCOME</a></h1>
 
     {% if user.is_authenticated %}
-        <h2 style="float:right">Logged in as: {{user.personal_number}}</h2>
+        <h2 style="float:right">Logged in as: {{ user.personal_number }}</h2>
     {% endif %}
 
 </header>

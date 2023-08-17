@@ -5,19 +5,27 @@ from schoolify.assignment.models import AssignmentCooking, AssignmentMusic, Assi
 
 @admin.register(AssignmentCooking)
 class AssignmentCookingAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('assignment_name',)
+    list_display = ['assignment_name', 'created_by']
+    search_fields = ("assignment_name",)
 
 
 @admin.register(AssignmentMathematics)
 class AssignmentMathematicsAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('assignment_name',)
+    list_display = ['assignment_name', 'created_by']
+    search_fields = ("assignment_name",)
 
 
 @admin.register(AssignmentEnglish)
 class AssignmentEnglishAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('assignment_name',)
+    list_display = ['assignment_name', 'created_by']
+    search_fields = ("assignment_name",)
 
 
 @admin.register(AssignmentMusic)
 class AssignmentMusicAdmin(admin.ModelAdmin):
-    pass
+    ordering = ('assignment_name',)
+    list_display = ['assignment_name', 'created_by']
+    search_fields = ("assignment_name",)

@@ -68,14 +68,14 @@
 
         </ul>
     </nav>
-{#<p>#}
-{#Path is: {{ request.path }}#}
-{#</p>#}
-{% if request.path == '/' %}
+    {#<p>#}
+    {#Path is: {{ request.path }}#}
+    {#</p>#}
+    {% if request.path == '/' %}
         <div class="music-img">
-        <img style=" width: 1903px; height: 773px;" src="{% static 'images/graduation-hat.jpg' %}" alt="music-icon">
-    </div>
-{% endif %}
+            <img style=" width: 1903px; height: 773px;" src="{% static 'images/graduation-hat.jpg' %}" alt="music-icon">
+        </div>
+    {% endif %}
 
     {% block page_content %}
     {% endblock %}

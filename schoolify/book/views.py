@@ -5,6 +5,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
+
+from schoolify.book.forms import BookCreateForm
 from schoolify.book.models import Book
 
 
@@ -28,8 +30,7 @@ class BooksListView(LoginRequiredMixin, ListView):
 class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     permission_required = 'book.add_book'
     template_name = 'book/books-create.html'
-    model = Book
-    fields = '__all__'
+    form_class = BookCreateForm
     success_url = reverse_lazy('books list')
 
 
