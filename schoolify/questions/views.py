@@ -3,13 +3,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from schoolify.questions.forms import AnswerForm, QuestionForm, QuestionEditForm, AnswerEditForm
+from schoolify.questions.forms import AnswerCreateForm, QuestionCreateForm, QuestionEditForm, AnswerEditForm
 from schoolify.questions.models import Question, Answer
 
 
 class QuestionCreateView(LoginRequiredMixin, CreateView):
     template_name = 'questions/questions.html'
-    form_class = QuestionForm
+    form_class = QuestionCreateForm
     success_url = reverse_lazy('questions all')
 
     def form_valid(self, form):
@@ -21,8 +21,8 @@ class QuestionListView(LoginRequiredMixin, ListView):
     template_name = 'questions/questions.html'
     model = Question
     extra_context = {
-        'question_form': QuestionForm(),
-        'answerform': AnswerForm(),
+        'question_form': QuestionCreateForm(),
+        'answerform': AnswerCreateForm(),
         'all_questions': Question.objects.all(),
     }
 
@@ -72,7 +72,7 @@ def answer_functionality(request, question_id):
     question = Question.objects.get(pk=question_id)
 
     if request.method == 'POST':
-        form = AnswerForm(request.POST)
+        form = AnswerCreateForm(request.POST)
         if form.is_valid():
 
             new_answer_instance = form.save(commit=False)

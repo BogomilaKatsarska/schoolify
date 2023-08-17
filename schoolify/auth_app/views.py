@@ -41,6 +41,15 @@ class SignOutView(LoginRequiredMixin, LogoutView):
     next_page = reverse_lazy('index')
 
 
+class ProfileDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Profile
+    template_name = "auth/profile-details.html"
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.pk == self.request.user.pk
+
+
 class ProfileEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     form_class = ProfileEditForm
@@ -59,15 +68,6 @@ class ProfileDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = "auth/profile-delete.html"
     form_class = ProfileDeleteForm
     success_url = reverse_lazy('index')
-
-    def test_func(self):
-        obj = self.get_object()
-        return obj.pk == self.request.user.pk
-
-
-class ProfileDetailsView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
-    model = Profile
-    template_name = "auth/profile-details.html"
 
     def test_func(self):
         obj = self.get_object()

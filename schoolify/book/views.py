@@ -5,9 +5,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView
-
 from schoolify.book.forms import BookCreateForm
 from schoolify.book.models import Book
+
+
+class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+    permission_required = 'book.add_book'
+    template_name = 'book/books-create.html'
+    form_class = BookCreateForm
+    success_url = reverse_lazy('books list')
 
 
 class BooksListView(LoginRequiredMixin, ListView):
@@ -25,13 +31,6 @@ class BooksListView(LoginRequiredMixin, ListView):
 
     def __get_pattern(self):
         return self.request.GET.get('pattern', None)
-
-
-class BookCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
-    permission_required = 'book.add_book'
-    template_name = 'book/books-create.html'
-    form_class = BookCreateForm
-    success_url = reverse_lazy('books list')
 
 
 @login_required

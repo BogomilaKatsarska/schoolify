@@ -61,6 +61,9 @@ class AssignmentMusicListView(LoginRequiredMixin, ListView):
     model = AssignmentMusic
     template_name = 'assignment/assignment-music-list.html'
     paginate_by = 3
+    extra_context = {
+        'assignmentmusics_count': AssignmentMusic.objects.count(),
+    }
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -72,6 +75,9 @@ class AssignmentMathematicsListView(LoginRequiredMixin, ListView):
     model = AssignmentMathematics
     template_name = 'assignment/assignment-mathematics-list.html'
     paginate_by = 3
+    extra_context = {
+        'assignmentmathematics_count': AssignmentMathematics.objects.count(),
+    }
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -83,6 +89,9 @@ class AssignmentEnglishListView(LoginRequiredMixin, ListView):
     model = AssignmentEnglish
     template_name = 'assignment/assignment-english-list.html'
     paginate_by = 3
+    extra_context = {
+        'assignmentenglish_count': AssignmentEnglish.objects.count(),
+    }
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -94,6 +103,9 @@ class AssignmentCookingListView(LoginRequiredMixin, ListView):
     model = AssignmentCooking
     template_name = 'assignment/assignment-cooking-list.html'
     paginate_by = 3
+    extra_context = {
+        'assignmentcooking_count': AssignmentCooking.objects.count(),
+    }
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -227,5 +239,3 @@ class AssignmentMathematicsDetailsView(LoginRequiredMixin, DetailView):
 class AssignmentCookingDetailsView(LoginRequiredMixin, DetailView):
     model = AssignmentCooking
     template_name = "assignment/assignment-cooking-details.html"
-
-

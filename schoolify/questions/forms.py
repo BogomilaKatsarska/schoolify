@@ -2,7 +2,7 @@ from django import forms
 from schoolify.questions.models import Question, Answer
 
 
-class QuestionForm(forms.ModelForm):
+class QuestionCreateForm(forms.ModelForm):
     class Meta:
         model = Question
         exclude = ('student',)
@@ -24,7 +24,7 @@ class QuestionEditForm(forms.ModelForm):
         fields = '__all__'
 
 
-class AnswerForm(forms.ModelForm):
+class AnswerCreateForm(forms.ModelForm):
     class Meta:
         model = Answer
         fields = ('comment_text',)

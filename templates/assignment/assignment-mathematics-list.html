@@ -8,7 +8,7 @@
     {% if object_list %}
 
         <section id="catalogue">
-        <h1 style="color:white;">List of Assignments</h1>
+        <h1 style="color:white;text-align: center">List of Assignments in Mathematics</h1>
 
         {% for assignment in assignmentmathematics_list %}
 
@@ -29,7 +29,7 @@
     {% endif %}
 
     </section>
-    {% if assignmentmathematics_list %}
+    {% if assignmentmathematics_count > 3 %}
         <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
